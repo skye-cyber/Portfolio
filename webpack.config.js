@@ -8,7 +8,7 @@ module.exports = {
     cryptoK: "./js/cryptoK.js",
   },
   output: {
-    filename: "_[name].js", // This will generate files named after the entry points
+    filename: "final_[name].js", // This will generate files named after the entry points
     path: path.resolve(__dirname, "./js"),
   },
   resolve: {

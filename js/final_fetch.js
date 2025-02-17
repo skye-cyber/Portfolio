@@ -112,4 +112,4 @@ projectsContainer.addEventListener('click', event => {
 window.onload = fetchProjects;
 /******/ })()
 ;
-//# sourceMappingURL=_fetch.js.map
+//# sourceMappingURL=final_fetch.js.map
