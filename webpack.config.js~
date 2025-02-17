@@ -4,8 +4,8 @@ module.exports = {
   entry: {
     main: "./js/script.js",
     aichat: "./js/aichat.js",
-    fetch: "./js/fetch.js",
     cryptoK: "./js/cryptoK.js",
+    contact: "./js/contact.js",
   },
   output: {
     filename: "final_[name].js", // This will generate files named after the entry points
@@ -20,15 +20,6 @@ module.exports = {
       crypto: require.resolve("crypto-browserify"),
       vm: require.resolve("vm-browserify"),
       stream: require.resolve("stream-browserify"),
-      //fs: require.resolve('browserify-fs'),
-      //util: require.resolve("util/"),
-      //zlib: require.resolve("browserify-zlib"),
-      //https: require.resolve("https-browserify"),
-      //url: require.resolve("url/"),
-      //http: require.resolve("stream-http"),
-      //assert: require.resolve("assert/"),
-      //process: require.resolve("process"),
-      //child_process: false, //'child-process-promise'
     },
   },
   plugins: [

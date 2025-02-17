@@ -55,10 +55,36 @@ export function getKey(){
   return key
 }
 
+export function getSID(){
+  const str = 'sjliame@ecivres@eyksws'
+  const Kdata = {
+    iv: '48f85512a881ad6780cf55f77f496518',
+    encryptedData: 'U2FsdGVkX194A8QF1hOHdZ3gHsaKCFJv+g19gxveHiQ='
+  }
+  const rts = str.split('').reverse().join('');
+  const yek = decryptData(Kdata, rts);
+  const key = yek.split('').reverse().join('');
+  return key
+}
+
+export function getTID(){
+  const str = 'sjliame@etalpmet@eyksws'
+  const Kdata = {
+    iv: 'e5b5493538f5f57f61ed6a08c7440eda',
+    encryptedData: 'U2FsdGVkX1+VNcBXtPzHk+quOntpCAZ7KTzYJ3CFO/2fiSNwiBwTnl+6FgBGAZtd'
+  }
+  const rts = str.split('').reverse().join('');
+  const yek = decryptData(Kdata, rts);
+  const key = yek.split('').reverse().join('');
+  return key
+}
+
+console.log(getTID())
 /*
-const api = "lMXzxkMuwvLPieDzYbvkOokmOqbPViYdUh_fh";
-const pass = "51@rekoJmotnahP@71nogard@eyksws".split('').reverse().join('');
-console.log(pass)
+const api = 'template_oj43cmr'.split('').reverse().join('');
+const pass = "swskye@template@emailjs"
+console.log(pass.split('').reverse().join(''))
+//const pass = "51@rekoJmotnahP@71nogard@eyksws".split('').reverse().join('');
 const cipherKey = hide_key(api, pass);
 console.log(`cipherKey: ${cipherKey.encryptedData}`);
 function key(){
@@ -66,9 +92,10 @@ function key(){
     iv: '49d7eb1b5844c1ab07634ee027222800',
     encryptedData: 'U2FsdGVkX1/23YF5hgHFQR+9rGGRl72YD0YoX29j8uoYwZ5LvSMVcRbKeKNV9356qEaDDnwe0zS12bFbOCuZew=='
   }
-const decrypted = decryptData(cipherKey1, pass);
+const decrypted = decryptData(cipherKey, pass);
 console.log(`Decrypted: ${decrypted.split('').reverse().join('')}`);
 }
 key()
-console.log(cipherKey)*/
+console.log(cipherKey)
+*/
 

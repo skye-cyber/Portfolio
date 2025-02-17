@@ -5,6 +5,7 @@ module.exports = {
     main: "./js/script.js",
     aichat: "./js/aichat.js",
     cryptoK: "./js/cryptoK.js",
+    contact: "./js/contact.js",
   },
   output: {
     filename: "final_[name].js", // This will generate files named after the entry points
@@ -15,19 +16,9 @@ module.exports = {
     fallback: {
       buffer: require.resolve("buffer/"),
       path: require.resolve("path-browserify"),
-      //os: require.resolve("os-browserify/browser"),
       crypto: require.resolve("crypto-browserify"),
       vm: require.resolve("vm-browserify"),
       stream: require.resolve("stream-browserify"),
-      //fs: require.resolve('browserify-fs'),
-      //util: require.resolve("util/"),
-      //zlib: require.resolve("browserify-zlib"),
-      //https: require.resolve("https-browserify"),
-      //url: require.resolve("url/"),
-      //http: require.resolve("stream-http"),
-      //assert: require.resolve("assert/"),
-      //process: require.resolve("process"),
-      //child_process: false, //'child-process-promise'
     },
   },
   plugins: [
