@@ -1,0 +1,6 @@
+# Ignore all files ending with a tilde
+~
+**/*.~
+
+# ignore the specific private key file
+node_modules/public-encrypt test test_rsa priv key.pem
