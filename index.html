@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Portfolio</title>
-    <!--<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">-->
     <link href="./css/styles.css" rel="stylesheet">
     <script type="text/javascript" src="./js/menu.js" defer></script>
     <script type="text/javascript" src="./js/final_main.js" defer></script>
-    <!--<script type="text/javascript" src="./js/projects.js" defer></script>-->
     <script type="text/javascript" src="./js/final_fetch.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous"/>
 </head>
@@ -57,7 +55,7 @@
     </header>
 
     <!-- Main Content Section -->
-    <section class="px-3 md:px-6 pt-8 md:pt-8">
+    <section class="px-2 md:px-6 pt-2 md:pt-4">
         <div class="text-center mb-10 hidden">
             <h2 class="text-4xl font-bold text-indigo-600">Portfolio</h2>
         </div>
@@ -85,14 +83,14 @@
         </div>
 
         <!-- Skills Cards Section -->
-        <section id="skills" class="bg-gradient-to-br from-pink-400 via-indigo-200 via-sky-700 to-blue-400 p-8 rounded-md">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mx-auto my-auto md:mx-6">
+        <section id="skills" class="w-full bg-gradient-to-br from-pink-400 via-indigo-200 via-sky-700 to-blue-400 p-6 rounded-md">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6 w-full">
                 <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
                     <h3 class="text-2xl font-bold text-indigo-500 mb-4">Skills</h3>
                     <div id="skills_sec" class="grid grid-flow-row hover:grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 whitespace-pre-wrap my-4 space-y-2 space-x-2"></div>
                     <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-400 text-white rounded-lg font-semibold transition duration-300">More Details</button>
                 </div>
-                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
+                <div class="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
                     <h3 class="text-2xl font-bold text-purple-500 mb-4">Additional Skills</h3>
                     <p class="text-gray-700 mb-6">Additional skills and proficiencies in various domains.</p>
                     <button class="px-4 py-2 bg-purple-500 hover:bg-purple-400 text-white rounded-lg font-semibold transition duration-300">More Details</button>
@@ -102,13 +100,13 @@
         <section id="git_troph" class="bg-gradient-to-tl from-blue-400 via-indigo-900 to-orange-500 mt-2 p-8 rounded-md items-center justify-center">
             <p class="font-bold text-center text-lg p-1 m-0">🏆 GitHub Trophies</p>
         </section>
-    </section>
+
 
     <!-- Projects Section with Gradient Background -->
-    <section id="projects" class="px-6 pb-6 pt-2 md:px-6 mx-4 md:mx-6 my-4 md:my-6 bg-gradient-to-br bg-gradient-to-r from-[#008fd1] via-cyan-400 to-blue-300 rounded-md shadow-md shadow-gray-400 hover:shadow-lg">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8">
+    <section id="projects" class="px-auto py-6 md:px-6 mx-1 md:mx-6 my-4 bg-gradient-to-br bg-gradient-to-r from-[#008fd1] via-cyan-400 to-blue-300 rounded-md shadow-md shadow-gray-400 hover:shadow-lg">
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-2">
             <!-- QuickAi Card -->
-            <div class="max-w-full dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6H18l-4.16 2.51.57 6.02L12 16.25l-6.09 3.73.57-6.02L6 10.51h2.91L12 2zm0 12l-2.36-1.71L1.82 4h8.36L12 8.79l2.88-2.57H22.18l-3.89 6.76L12 14z"/>
@@ -123,7 +121,7 @@
             </div>
 
             <!-- Encryptionsuite Card -->
-            <div class="max-w-sm dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm3-8h-1.5V7h-3v3H9v1.5h3V15h1.5V11.5zm-6 0H7v-6h1.5v4.5h3V7H15v1.5h-3v3H9z"/>
@@ -138,7 +136,7 @@
             </div>
 
             <!-- AFReader Card -->
-            <div class="max-w-sm dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12v-2H6V4h8c1.1 0 2-.9 2-2zm0 18H6V4h8v16zm2-8c0-.11-.01-.22-.03-.33l1.44-1.81c.19-.26.1-.59-.14-.8-.24-.2-.56-.28-.84-.21L14.13 11l-2.67-3.22c-.28-.34-.62-.51-1-.51-.38 0-.73.17-.9.45L9.88 9h2.9c0 .61.49 1.1 1.1 1.1.21 0 .42-.08.59-.22l1.57-1.89.89 1.1c.1.13.25.2.4.2.26 0 .49-.21.59-.49l1-1.21c.17-.24.34-.42.53-.53l.99-.8c.37-.3.81-.48 1.3-.48.5 0 .94.18 1.3.48l1.93 1.45c.47.36.47 1.02 0 1.38l-1.92 1.44c-.46.35-1.01.53-1.6.53-.6 0-1.14-.18-1.59-.53l-1.53-1.13c-.37-.27-.89-.26-1.26.01s-.28.8-.01 1.18l.91 1.21c.12.17.27.3.44.3.25 0 .5-.12.67-.29l1.94-1.94c.24-.26.24-.67 0-.93l-1.8-1.78c-.29-.29-.76-.3-1.15-.01s-.87.66-.6.94l1.04 1.45c.17.24.27.53.27.84zm-1.2-.35c0-.2-.08-.38-.22-.51l-1.44-1.81c-.19-.26-.1-.59.14-.8.24-.2.56-.28.84-.21l.86.66L12 10.5l-2.67-3.22c-.28-.34-.62-.51-1-.51-.38 0-.73.17-.9.45L7.84 9h2.9c0 .61.49 1.1 1.1 1.1.21 0 .42-.08.59-.22l1.57-1.89.89 1.1c.1.13.25.2.4.2.26 0 .49-.21.59-.49l1-1.21c.17-.24.34-.42.53-.53l.99-.8c.37-.3.81-.48 1.3-.48.5 0 .94.18 1.3.48l1.93 1.45c.47.36.47 1.02 0 1.38l-1.92 1.44c-.46.35-1.01.53-1.6.53-.6 0-1.14-.18-1.59-.53l-1.53-1.13c-.37-.27-.89-.26-1.26.01s-.28.8-.01 1.18l.91 1.21c.12.17.27.3.44.3.25 0 .5-.12.67-.29l1.94-1.94c.24-.26.24-.67 0-.93l-1.8-1.78c-.29-.29-.76-.3-1.15-.01s-.87.66-.6.94l1.04 1.45c.17.24.27.53.27.84z"/>
@@ -153,7 +151,7 @@
             </div>
 
             <!-- ThreatHunter Card -->
-            <div class="max-w-sm dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-9h-3V5h-2v6H8l4 4 4-4z"/>
@@ -168,7 +166,7 @@
             </div>
 
             <!-- fconverter Card -->
-            <div class="max-w-sm dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2v1.99c-2.76.3-4.7 2.54-4.7 5.21 0 2.94 2.34 5.27 5.2 5.27s5.27-2.33 5.27-5.27c0-2.67-1.94-4.91-4.69-5.21V7c.55-.11 1.02-.35 1.38-.68.76-.76.76-2.03 0-2.79zM2 4.2C1.45 4.2.88 4.48.46 4.92l.72.72C1.54 5.18 2 5.78 2 6.5S2.45 7.8 3 8.27l1.53-1.53C4.03 6.45 4 6 .93 5.07 1.85 3.22 4.88 2 8 2s6.15 1.25 7.07 3.07-.93 1.93-2.07 3.07l-1.53-1.53c.67-.67 1.27-1.5 1.27-2.27 0-1.39-1.11-2.5-2.5-2.5S8.7 5 8.7 6.39s1.11 2.5 2.5 2.5l1.5-1.5c.36.36.36.97 0 1.33l-1.5 1.5c-.22.22-.52.34-.83.34-.67 0-1.27-.36-1.53-.92l-1.34 1.34C6.45 16.55 5.11 18 3 18c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2s2 .9 2 2c0 .89-.3 1.7-.83 2.28l1.5-1.5c.56-.57 1.41-.89 2.28-.89.55 0 1.07.22 1.42.58l.83.82c-.91.73-1.63 1.8-1.96 2.96l-.83-.82c-.35-.36-.58-.86-.58-1.42 0-1.1.9-2 2-2 .55 0 1.02.24 1.38.68C21.55 9.4 22 8.83 22 8c0-2.76-2.24-5-5-5-1.1 0-2 .9-2 2v1.99C13.43 9.46 14 10.06 14 11c0 1.1-.45 2.1-1.17 2.83L12 14.25z"/>
@@ -182,7 +180,7 @@
                 </div>
             </div>
             <!-- CryptoSharePKI Card -->
-            <div class="max-w-sm dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm5-5h-2v-2h2v2zm-5 0h-2v-2h2v2zm5-3h-2v-2h2v2zm-5 0h-2v-2h2v2zm-5 3h-2v-2h2v2zm0-5h-2v-2h2v2z"/>
@@ -197,7 +195,7 @@
             </div>
 
             <!-- Agrimax Card -->
-            <div class="max-w-sm dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2v1.99c-2.76.3-4.7 2.54-4.7 5.21 0 2.94 2.34 5.27 5.2 5.27s5.27-2.33 5.27-5.27c0-2.67-1.94-4.91-4.69-5.21V7c.55-.11 1.02-.35 1.38-.68.76-.76.76-2.03 0-2.79zM2 4.2C1.45 4.2.88 4.48.46 4.92l.72.72C1.54 5.18 2 5.78 2 6.5S1.45 7.8 3 8.27l1.53-1.53C4.03 6.45 4 6 .93 5.07 1.85 3.22 4.88 2 8 2s6.15 1.25 7.07 3.07-.93 1.93-2.07 3.07l-1.53-1.53c.67-.67 1.27-1.5 1.27-2.27 0-1.39-1.11-2.5-2.5-2.5S8.7 5 8.7 6.39s1.11 2.5 2.5 2.5l1.5-1.5c.36.36.36.97 0 1.33l-1.5 1.5c-.22.22-.52.34-.83.34-.67 0-1.27-.36-1.53-.92l-1.34 1.34C6.45 16.55 5.11 18 3 18c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2s2 .9 2 2c0 .89-.3 1.7-.83 2.28l1.5-1.5c.56-.57 1.41-.89 2.28-.89.55 0 1.07.22 1.42.58l.83.82c-.91.73-1.63 1.8-1.96 2.96l-.83-.82c-.35-.36-.58-.86-.58-1.42 0-1.1.9-2 2-2 .55 0 1.02.24 1.38.68C21.55 9.4 22 8.83 22 8c0-2.76-2.24-5-5-5-1.1 0-2 .9-2 2v1.99C13.43 9.46 14 10.06 14 11c0 1.1-.45 2.1-1.17 2.83L12 14.25z"/>
@@ -212,7 +210,7 @@
             </div>
 
             <!-- NetPilot Card -->
-            <div class="max-w-sm dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
+            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
                 <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
                     <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm5-5h-2v-2h2v2zm-5 0h-2v-2h2v2zm5-3h-2v-2h2v2zm-5 0h-2v-2h2v2zm-5 3h-2v-2h2v2zm0-5h-2v-2h2v2zm5 0h-2v-2h2v2zm0-3h-2v-2h2v2zm-5 0h-2v-2h2v2zm-5 3h-2v-2h2v2zm0-5h-2v-2h2v2zm5 0h-2v-2h2v2z"/>
@@ -231,7 +229,7 @@
     </section>
 
     <!-- Journey Section -->
-    <section id="journey" class="py-6 px-6 my-4 md:my-6 mx-4 md:mx-6 rounded-md bg-gradient-to-br from-blue-50 via-purple-50 to-sky-50">
+    <section id="journey" class="py-6 px-6 my-4 md:my-6 mx-1 md:mx-6 rounded-md bg-gradient-to-br from-blue-50 via-purple-50 to-sky-50">
         <h2 class="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800">
             My Journey
         </h2>
@@ -418,7 +416,7 @@
     </section>
 
     <!-- Additional Information Section -->
-    <section id="additional-info" class="py-12 my-4 md:my-6 px-6 mx-4 md:mx-6 rounded-md bg-gradient-to-br from-sky-100 via-blue-50 to-purple-100">
+    <section id="additional-info" class="py-12 my-4 md:my-6 px-6 mx-1 md:mx-6 rounded-md bg-gradient-to-br from-sky-100 via-blue-50 to-purple-100">
         <h2 class="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-purple-900">
             Additional Information
         </h2>
@@ -459,14 +457,14 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="p-10 mx-4 md:mx-6 rounded-md bg-gradient-to-r from-blue-100 via-purple-50 to-sky-100">
+    <section id="contact" class="p-10 mx-1 md:mx-6 rounded-md bg-gradient-to-r from-blue-100 via-purple-50 to-sky-100">
         <h2 class="text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800">
             Contact Me
         </h2>
 
         <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Contact Form Section -->
-            <div class="max-w-xs lg:max-w-lg xl:max-w-xl bg-white bg-opacity-80 p-8 rounded-lg shadow-lg">
+            <div class="max-w-fit lg:max-w-lg xl:max-w-xl bg-white bg-opacity-80 p-8 rounded-lg shadow-lg">
                 <form action="https://formspree.io/f/{your-form-id}" method="POST" class="space-x-2 md:space-y-6">
                     <div>
                         <label for="name" class="block text-lg font-semibold text-gray-700">Name</label>
@@ -501,7 +499,7 @@
             </div>
 
             <!-- Additional Socials Section -->
-            <div class="flex flex-col items-center justify-center bg-gradient-to-r from-purple-100 to-blue-100 p-8 rounded-lg shadow-lg">
+            <div class="max-w-fit flex flex-col items-center justify-center bg-gradient-to-r from-purple-100 to-blue-100 p-8 rounded-lg shadow-lg">
                 <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-blue-700 mb-4">
                     Connect with Me
                 </h3>
@@ -532,7 +530,7 @@
             </div>
         </section>
     </section>
-
+    </section>
     <!-- Footer Section -->
     <footer class="text-center p-6 bg-gradient-to-r from-gray-900 via-cyan-800 to-black text-white mt-10">
         <h2 class="text-2xl font-bold text-indigo-400"><a href="aichat.html">SKYE</a></h2>

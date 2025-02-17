@@ -4,7 +4,6 @@ module.exports = {
   entry: {
     main: "./js/script.js",
     aichat: "./js/aichat.js",
-    fetch: "./js/fetch.js",
     cryptoK: "./js/cryptoK.js",
   },
   output: {
