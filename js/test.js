@@ -1,0 +1,2 @@
+const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
+console.log(SERVICE_ID)
