@@ -808,6 +808,10 @@ video {
   height: fit-content;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
@@ -839,6 +843,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .max-w-2xl {
@@ -1533,6 +1541,14 @@ video {
   fill: currentColor;
 }
 
+.fill-\[\#fecd38\] {
+  fill: #fecd38;
+}
+
+.fill-\[\#00557f\] {
+  fill: #00557f;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -2069,6 +2085,10 @@ video {
 
 .hover\:to-violet-400:hover {
   --tw-gradient-to: #a78bfa var(--tw-gradient-to-position);
+}
+
+.hover\:fill-purple-500:hover {
+  fill: #a855f7;
 }
 
 .hover\:text-blue-600:hover {
