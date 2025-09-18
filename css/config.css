@@ -63,40 +63,6 @@ html{
     }
 }
 
-.gradient-border {
-    position: relative;
-    background: rgba(22, 27, 34, 0.8);
-    border-radius: 16px;
-}
-
-
-.gradient-border::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-    border-radius: 18px;
-    z-index: -1;
-    animation: border-animation 3s ease infinite;
-    background-size: 300% 300%;
-}
-
-.card-bg-animate{
-    background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-    border-radius: 18px;
-    z-index: -1;
-    animation: border-animation 3s ease infinite;
-    background-size: 300% 300%;
-}
-@keyframes border-animation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 
 .gradient-text {
     background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
@@ -243,4 +209,46 @@ header {
 @keyframes blink-caret {
     from, to { border-color: transparent; }
     50% { border-color: var(--accent-primary); }
+}
+
+
+.gradient-text-v2 {
+    background: linear-gradient(90deg, #6C63FF, #46E8B0, #FF6B6B);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    animation: gradient 5s ease infinite;
+}
+
+.grid-pattern-v2 {
+    background-image:
+    linear-gradient(rgba(108, 99, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.5;
+    filter: blur(40px);
+    z-index: 0;
+}
+
+.skill-category {
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+}
+
+.skill-item {
+    transition: all 0.2s ease;
+}
+
+.skill-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }

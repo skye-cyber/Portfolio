@@ -8,7 +8,7 @@
     <script type="text/javascript" src="./js/animation/particles.js" defer></script>
     <script type="text/javascript" src="./js/animation/sphere.js" defer></script>
     <script type="text/javascript" src="./js/animation/networks.js" defer></script>
-    <script type="text/javascript" src="./js/menu.js" defer></script>
+    <!--<script type="text/javascript" src="./js/menu.js" defer></script>-->
     <script type="text/javascript" src="./js/themes.js" defer></script>
     <script type="text/javascript" src="./js/final_main.js" defer></script>
     <script type="text/javascript" src="./js/final_fetch.js" defer></script>
@@ -68,7 +68,7 @@
     <section id="about" class="min-h-screen flex items-center justify-center relative pt-20 pb-10 px-4">
         <div class="container mx-auto text-center z-10">
             <div class="floating mb-8">
-                <div class="relative w-48 h-48 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-00 mx-auto shadow-2xl flex items-center justify-center z-[-1] backdrop-inver">
+                <div class="relative w-48 h-48 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto shadow-2xl flex items-center justify-center z-[-1] backdrop-inver">
                     <canvas id="sphere-canvas" class="absolute z-1 h-48 w-48 rounded-full"></canvas>
                     <span class="text-6xl text-text-secondary dark:text-white z-1">W</span>
                 </div>
@@ -98,60 +98,204 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 px-4 relative">
-        <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Skills & Expertise</h2>
+    <section id="skills-wrapper" class="relative">
+        <!-- Animated background shapes -->
+        <div class="floating-shape animate-float w-80 h-80 bg-purple-500 top-1/4 left-1/4"></div>
+        <div class="floating-shape animate-pulse-soft w-64 h-64 bg-teal-500 top-1/2 right-1/4 animation-delay-1000"></div>
+        <div class="floating-shape animate-float w-72 h-72 bg-pink-500 bottom-1/4 left-1/3 animation-delay-2000"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="relative bg-white dark:bg-[#161b22]/0 rounded-2xl p-8 transition-transform transition-all hover:translate-y-[-10px] duration-300 shadow-xl shadow-[#00000]">
-                    <div class="hidden dark:block card-bg-animate absolute z-[-1] top-0 left-0 right-0 bottom-0 border-2 border-cyan-400 rounded-2xl w-full"></div>
-                    <div class="hidden dark:block bg-[#171722]/70 absolute z-[0] mx-auto top-[-2px] left-[2px] right-[-2px] bottom-[2px] w-full rounded-2xl"></div>
-                    <section class="absolute z-[1] w-full h-full top-0 left-0 right-0 bottom-0 p-6 backdrop-contrast-150">
-                        <h3 class="text-2xl font-bold mb-6 flex items-center" style="color: var(--accent-primary);">
-                            <i class="fas fa-code mr-3"></i> Technical Skills
-                        </h3>
-                        <div class="flex flex-wrap">
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Python</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Django</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">JavaScript</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">React</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Tailwind CSS</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">PostgreSQL</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Git</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Docker</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">REST APIs</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">AI/ML</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Cybersecurity</span>
-                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Linux</span>
+        <!-- Skills Section -->
+        <section class="relative z-10 w-full max-w-6xl mx-auto py-12 px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 gradient-text-v2">Skills & Expertise</h2>
+            <p class="text-xl text-center mb-12 text-gray-400 max-w-3xl mx-auto">A comprehensive showcase of my technical abilities and tools I work with</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Programming Languages -->
+                <div class="skill-category bg-gray-800 bg-opacity-50 rounded-2xl p-6 backdrop-blur-md border border-gray-700">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center mr-4">
+                            <i class="fas fa-code text-white text-xl"></i>
                         </div>
-                    </section>
+                        <h3 class="text-2xl font-bold text-white">Languages</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-400 text-3xl mb-2"><i class="fab fa-python"></i></div>
+                            <p class="text-sm font-medium">Python</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-yellow-400 text-3xl mb-2"><i class="fab fa-js"></i></div>
+                            <p class="text-sm font-medium">JavaScript</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-600 text-3xl mb-2"><i class="fab fa-java"></i></div>
+                            <p class="text-sm font-medium">Java</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-gray-300 text-3xl mb-2"><i class="fas fa-terminal"></i></div>
+                            <p class="text-sm font-medium">Bash/Shell</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-gray-300 text-3xl mb-2"><i class="fab fa-npm"></i></div>
+                            <p class="text-sm font-medium">NPM</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-gray-300 text-3xl mb-2"><i class="fab fa-html5"></i></div>
+                            <p class="text-sm font-medium">HMTL</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="relative bg-white dark:bg-[#161b22]/0 rounded-2xl p-8 transition-transform transition-all hover:translate-y-[-10px] duration-300 shadow-xl shadow-[#00000] border-x-4 border-y-2 border-t-0 border-x-cyan-400 border-y-none">
-                    <div class="hidden dark:block card-bg-animate absolute z-[-1] top-0 left-0 right-0 bottom-0 rounded-2xl w-full"></div>
-                    <div class="hidden dark:block bg-[#171722]/70 absolute z-[0] mx-auto top-0 left-0 right-0 bottom-0 w-full rounded-2xl"></div>
-                        <section class=" z-[1] w-full h-full top-0 left-0 right-0 bottom-0 p-6 backdrop-saturate-[1]">
-                            <h3 class="text-2xl font-bold mb-6 flex items-center" style="color: var(--accent-primary);">
-                                <i class="fas fa-code mr-3"></i> Technical Skills
-                            </h3>
-                            <div class="flex flex-wrap">
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Python</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Django</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">JavaScript</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">React</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Tailwind CSS</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">PostgreSQL</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Git</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Docker</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">REST APIs</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">AI/ML</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Cybersecurity</span>
-                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Linux</span>
+                <!-- Web Development -->
+                <div class="skill-category bg-gray-800 bg-opacity-50 rounded-2xl p-6 backdrop-blur-md border border-gray-700">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center mr-4">
+                            <i class="fas fa-globe text-white text-xl"></i>
                         </div>
-                    </section>
+                        <h3 class="text-2xl font-bold text-white">Web Dev</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-green-500 text-3xl mb-2"><i class="fab fa-node-js"></i></div>
+                            <p class="text-sm font-medium">Node.js</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-400 text-3xl mb-2"><i class="fab fa-react"></i></div>
+                            <p class="text-sm font-medium">React</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-600 text-3xl mb-2"><i class="fab fa-vuejs"></i></div>
+                            <p class="text-sm font-medium">Vue.js</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-300 text-3xl mb-2"><i class="fab fa-css3-alt"></i></div>
+                            <p class="text-sm font-medium">CSS3</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-300 text-3xl mb-2"><i class="fab fa-js-square"></i></div>
+                            <p class="text-sm font-medium">Webpack</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center ">
+                            <div class="text-blue-300 text-3xl mb-2 flex items-center justify-center"><svg viewBox="0 0 167 21" fill="none"><path fill="#38bdf8" d="M17.183 0C12.6 0 9.737 2.291 8.59 6.873c1.719-2.29 3.723-3.15 6.014-2.577 1.307.326 2.242 1.274 3.275 2.324 1.685 1.71 3.635 3.689 7.894 3.689 4.582 0 7.445-2.291 8.591-6.872-1.718 2.29-3.723 3.15-6.013 2.576-1.308-.326-2.243-1.274-3.276-2.324C23.39 1.98 21.44 0 17.183 0ZM8.59 10.309C4.01 10.309 1.145 12.6 0 17.182c1.718-2.291 3.723-3.15 6.013-2.577 1.308.326 2.243 1.274 3.276 2.324 1.685 1.71 3.635 3.689 7.894 3.689 4.582 0 7.445-2.29 8.59-6.872-1.718 2.29-3.722 3.15-6.013 2.577-1.307-.327-2.242-1.276-3.276-2.325-1.684-1.71-3.634-3.689-7.893-3.689Z"/></svg></div>
+                            <p class="text-sm font-medium">TailwindCSS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend & Databases -->
+                <div class="skill-category bg-gray-800 bg-opacity-50 rounded-2xl p-6 backdrop-blur-md border border-gray-700">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-emerald-400 flex items-center justify-center mr-4">
+                            <i class="fas fa-server text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Backend & DB</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-green-700 text-3xl mb-2"><i class="fas fa-database"></i></div>
+                            <p class="text-sm font-medium">PostgreSQL</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-400 text-3xl mb-2"><i class="fas fa-database"></i></div>
+                            <p class="text-sm font-medium">MongoDB</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-orange-500 text-3xl mb-2"><i class="fas fa-fire"></i></div>
+                            <p class="text-sm font-medium">Firebase</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-gray-300 text-3xl mb-2"><i class="fas fa-cloud"></i></div>
+                            <p class="text-sm font-medium">REST APIs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="skill-category bg-gray-800 bg-opacity-50 rounded-2xl p-6 backdrop-blur-md border border-gray-700">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-red-500 to-orange-400 flex items-center justify-center mr-4">
+                            <i class="fas fa-cubes text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Frameworks</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-green-600 text-3xl mb-2 flex items-center justify-center"><img class="XNo5Ab rounded-full h-8 w-8" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAaVBMVEURMigAKx8AKBsKLyRmc256hYFAU0wAJhp0f3s6T0gAGADf4uH///+FkIwAAADm6OeBjIja3NsACwDFysjq7OsAEwAAIhSUnZrv8fD29/cAEACwtrTP0tEhPTTAxsRSY12co6AAHQxbamUrGWKdAAAAv0lEQVR4AWIYaACojS4SEIahIIDGE9Kpu8v974g7H3ZMvS8eLoQ83yhTWhurnN4R6gMgjGIgsQSmJwx+YJbHheNvYn0ZndBGUVS9kqzqtCnaI3b9MCj+YmOLcy4D0uIZuwDA1LfnAb0hnwGYY58U2hoIMuZJrBYgLb+g0AB4RTZ7VABNnRTkaK3DJUc8lnAvyCoztQDaWEUAFH/brrVbhe/8ugEYJaNibQPEHUWXYWPmjIwMm3ar2JfYteLszzkAujcN06GBllAAAAAASUVORK5CYII=" alt="" data-csiid="pe_LaOT5F5X9i-gPxdLOsAc_2" data-atf="1" data-iml="1758195622349"></div>
+
+                            <p class="text-sm font-medium">Django</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-gray-300 text-3xl mb-2"><i class="fas fa-bolt"></i></div>
+                            <p class="text-sm font-medium">FastAPI</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-500 text-3xl mb-2"><i class="fas fa-atom"></i></div>
+                            <p class="text-sm font-medium">Electron</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-purple-500 text-3xl mb-2"><i class="fab fa-bootstrap"></i></div>
+                            <p class="text-sm font-medium">Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="skill-category bg-gray-800 bg-opacity-50 rounded-2xl p-6 backdrop-blur-md border border-gray-700">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-400 flex items-center justify-center mr-4">
+                            <i class="fas fa-tools text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Tools & Tech</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-500 text-3xl mb-2"><i class="fab fa-docker"></i></div>
+                            <p class="text-sm font-medium">Docker</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-red-500 text-3xl mb-2"><i class="fab fa-git-alt"></i></div>
+                            <p class="text-sm font-medium">Git</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-orange-500 text-3xl mb-2"><i class="fab fa-aws"></i></div>
+                            <p class="text-sm font-medium">AWS</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-400 text-3xl mb-2"><i class="fab fa-digital-ocean"></i></div>
+                            <p class="text-sm font-medium">DigitalOcean</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & Data Science -->
+                <div class="skill-category bg-gray-800 bg-opacity-50 rounded-2xl p-6 backdrop-blur-md border border-gray-700">
+                    <div class="flex items-center mb-5">
+                        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">AI & Data Science</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-orange-500 text-3xl mb-2"><i class="fas fa-robot"></i></div>
+                            <p class="text-sm font-medium">TensorFlow</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-blue-400 text-3xl mb-2"><i class="fas fa-chart-line"></i></div>
+                            <p class="text-sm font-medium">Data Analysis</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-yellow-400 text-3xl mb-2"><i class="fas fa-project-diagram"></i></div>
+                            <p class="text-sm font-medium">Neural Networks</p>
+                        </div>
+                        <div class="skill-item bg-gray-900 bg-opacity-70 rounded-xl p-3 text-center">
+                            <div class="text-red-400 text-3xl mb-2"><i class="fas fa-cogs"></i></div>
+                            <p class="text-sm font-medium">ML Algorithms</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </section>
 
     <!-- Projects Section -->
@@ -163,7 +307,8 @@
                 <!-- Project 1 -->
                 <div class="bg-white dark:bg-indigo-950 rounded-2xl p-6 p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
                     <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mb-6 flex items-center justify-center">
-                        <i class="fas fa-robot text-6xl text-white"></i>
+                        <img src="./assets/images/quickai.png" class="h-20 w-20">
+                        <!--<i class="fas fa-robot text-6xl text-white"></i>-->
                     </div>
                     <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">QuickAi</h3>
                     <p class="mb-4" style="color: var(--text-secondary);">A versatile AI assistant designed to assist with various tasks using advanced machine learning models.</p>
@@ -172,7 +317,7 @@
                         <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">AI</span>
                         <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">ML</span>
                     </div>
-                    <a href="#" class="flex items-center text-indigo-400 hover:text-indigo-300">
+                    <a href="https://github.com/skye-cyber/QuickAi.git" target="_blank" class="flex items-center text-indigo-400 hover:text-indigo-300">
                         View Project <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -189,13 +334,30 @@
                         <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">Security</span>
                         <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">CLI</span>
                     </div>
-                    <a href="#" class="flex items-center text-green-400 hover:text-green-300">
+                    <a href="https://github.com/skye-cyber/Encryptionsuite.git" target="_blank" class="flex items-center text-green-400 hover:text-green-300">
                         View Project <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
 
                 <!-- Project 3 -->
                 <div class="bg-white dark:bg-[#004261] rounded-2xl border border-cyan-500 backdrop-invert p-6 card-hover p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-file-alt text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">FileMAC</h3>
+                    <p class="mb-4" style="color: var(--text-secondary);">A comprehensive multimedia file operation kit. Encapsulating reputable multimedia elements and more.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">CLI</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">File Conversio</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">File Manager</span>
+                    </div>
+                    <a href="https://github.com/skye-cyber/FileMAC.git" target="_blank" class="flex items-center text-blue-400 hover:text-blue-300">
+                        View Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="hidden bg-white dark:bg-[#004261] rounded-2xl border border-cyan-500 backdrop-invert p-6 card-hover p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
                     <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg mb-6 flex items-center justify-center">
                         <i class="fas fa-file-alt text-6xl text-white"></i>
                     </div>
@@ -206,7 +368,7 @@
                         <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">CLI</span>
                         <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">Animation</span>
                     </div>
-                    <a href="#" class="flex items-center text-blue-400 hover:text-blue-300">
+                    <a href="https://github.com/skye-cyber/AFReader.git" target="_blank" class="flex items-center text-blue-400 hover:text-blue-300">
                         View Project <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>

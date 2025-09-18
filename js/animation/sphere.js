@@ -90,7 +90,7 @@
             if (z2 >= 0.99) return;
 
             // Perspective projection
-            const perspective = 510;
+            const perspective = 400;
             const z3D = z2 * sphereRadius;
             const scale = perspective / (perspective - z3D);
             const x2d = state.cx + x1 * sphereRadius * scale;

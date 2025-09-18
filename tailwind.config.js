@@ -78,7 +78,9 @@ module.exports = {
                 'heartpulse': 'heartpulse 1s infinite',
                 'spin': 'spin 2s linear infinite',
                 'spin-200': 'spin 0.5s linear infinite',
-                'gradient': 'gradient 5s ease infinite',
+                'float': 'float 6s ease-in-out infinite',
+                'pulse-soft': 'pulse-soft 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'gradient': 'gradient 15s ease infinite',
             },
 
             keyframes: {
@@ -96,23 +98,37 @@ module.exports = {
                     '0%': { transform: 'rotate(0deg)' },
                     '100%': { transform: 'rotate(360deg)' },
                 },
-                gradient: {
-                    '0%': { "background-position": "0% 50%" },
-                    '50%': { "background-position": "100% 50%" },
-                    '100%': { "background-position": "0% 50%" },
+
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' },
                 },
+                'pulse-soft': {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.7' },
+                },
+                gradient: {
+                    '0%': { 'background-position': '0% 50%' },
+                    '50%': { 'background-position': '100% 50%' },
+                    '100%': { 'background-position': '0% 50%' },
+                }
             },
-            /*gradientColorStops: {
-             *          'gradient-primary': '#00b4d8',
-             *          'gradient-secondary': '#00ffcc',
-        },*/
+            backgroundSize: {
+                '300%': '300%',
+            }
+
         },
-        plugins: [
-            /*require('tailwind-scrollbar'),
-             *        require('flowbite/plugin')({
-             *            charts: true,
-      }),
-      innerShadow*/
-        ],
-    }
+                /*gradientColorStops: {
+                  *          'gradient-primary': '#00b4d8',
+                  *          'gradient-secondary': '#00ffcc',
+        },*/
+    },
+    plugins: [
+                /*require('tailwind-scrollbar'),
+                  *        require('flowbite/plugin')({
+                  *            charts: true,
+    }),
+    innerShadow*/
+    ],
 }
+

@@ -1,8 +1,8 @@
 import { marked } from "marked";
 
 document.addEventListener('DOMContentLoaded', () => {
-    const skills = document.getElementById('skills_sec');
-    const trohpy_sec = document.getElementById('git_troph');
+    const skills = document.getElementById('skills-list');
+    const trohpy_sec = document.getElementById('trophies');
 
     const gitTrophies = [
         '![](https://github-profile-trophy.vercel.app/?username=skye-cyber&theme=radical&no-frame=false&no-bg=true&margin-w=4)'];
@@ -11,8 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
         '![](https://github-contributor-stats.vercel.app/api?username=skye-cyber&limit=5&theme=tokyonight&combine_all_yearly_contributions=true)'];
 
     const stackArray = [
+        '![CyberSecurity](https://img.shields.io/badge/CyberSecurity-3670A0?style=for-the-badge&logo=cybersecurity&logoColor=55aaff)',
+        '![Rest APIs](https://img.shields.io/badge/Rest_APIs-3670A0?style=for-the-badge&logo=rest_apis&logoColor=ffdy54)',
+        '![AI/ML](https://img.shields.io/badge/AI/ML-3670A0?style=for-the-badge&logo=ai&logoColor=ffdd54)',
+        '![Docker](https://img.shields.io/badge/Docker-3670A0?style=for-the-badge&logo=docker&logoColor=ffdd54)',
+        '![Linux](https://img.shields.io/badge/Linux-3670A0?style=for-the-badge&logo=linux&logoColor=ffdd54)',
+        '![PostgreSQL](https://img.shields.io/badge/PostgreSQL-3670A0?style=for-the-badge&logo=postgresql&logoColor=ffdd54)',
+        '![React](https://img.shields.io/badge/React-3670A0?style=for-the-badge&logo=react&logoColor=ffdd54)',
         '![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)',
         '![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)',
+        '![Git](https://img.shields.io/badge/Git-3670A0?style=for-the-badge&logo=git&logoColor=ffff00)',
         '![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)',
         '![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)',
         '![Gimp](https://img.shields.io/badge/Gimp-657D8B?style=for-the-badge&logo=gimp&logoColor=FFFFFF)',
@@ -52,9 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
     stackArray.forEach((badgeUrl) => {
         // Create a new anchor element
         const link = document.createElement('a');
+        link.classList.add('rounded-xl')
         const imagestr = marked(badgeUrl);
 
         const img = parseStringToImageElement(imagestr);
+        img.classList.add('rounded-xl')
 
         link.href = img.src; // Set the href attribute to the badge URL
         link.target = '_blank'; // Ensure the link opens in a new tab
