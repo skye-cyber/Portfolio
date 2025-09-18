@@ -6,6 +6,7 @@ module.exports = {
     ],
     theme: {
         screens: {
+            xs: '420',
             sm: '640px',
             md: '768px',
             lg: '1024px',
@@ -119,16 +120,26 @@ module.exports = {
 
         },
                 /*gradientColorStops: {
-                  *          'gradient-primary': '#00b4d8',
-                  *          'gradient-secondary': '#00ffcc',
-        },*/
+                        *          'gradient-primary': '#00b4d8',
+                        *          'gradient-secondary': '#00ffcc',
+},*/
     },
     plugins: [
-                /*require('tailwind-scrollbar'),
-                  *        require('flowbite/plugin')({
-                  *            charts: true,
-    }),
-    innerShadow*/
+        function({ addUtilities }) {
+            const newUtilities = {
+                '.text-glow': {
+                    'text-shadow': '0 0 10px rgba(129, 140, 248, 0.6), 0 0 20px rgba(129, 140, 248, 0.3)',
+                },
+                '.text-glow-sm': {
+                    'text-shadow': '0 0 5px rgba(129, 140, 248, 0.5)',
+                },
+                '.text-glow-lg': {
+                    'text-shadow': '0 0 15px rgba(129, 140, 248, 0.8), 0 0 30px rgba(129, 140, 248, 0.4)',
+                },
+            }
+
+            addUtilities(newUtilities, ['responsive', 'hover'])
+        },
     ],
 }
 
