@@ -3,541 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Portfolio</title>
+    <title>Wambua - Portfolio</title>
     <link href="./css/styles.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/animation/particles.js" defer></script>
+    <script type="text/javascript" src="./js/animation/sphere.js" defer></script>
+    <script type="text/javascript" src="./js/animation/networks.js" defer></script>
     <script type="text/javascript" src="./js/menu.js" defer></script>
+    <script type="text/javascript" src="./js/themes.js" defer></script>
     <script type="text/javascript" src="./js/final_main.js" defer></script>
     <script type="text/javascript" src="./js/final_fetch.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous"/>
+    <!--<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    </style>
 </head>
-<body class="bg-gradient-to-br from-blue-100 via-indigo-200 to-blue-400 text-gray-800 font-sans antialiased overflow-x-hidden">
-
-    <!-- Header Section with Tailwind Gradient Background -->
-    <header class="relative bg-gradient-to-r from-blue-800 via-cyan-100 via-blue-600 via-purple-500 to-indigo-500 via-indigo-600 p-6 shadow-lg text-white">
+<body class="antialiased overflow-x-hidden">
+    <!-- Particle Background -->
+    <div id="particle-container" class="fixed bottom-0 left-0 w-full h-[50vh] z-0"></div>
+    <canvas id="network-canvas" class="fixed top-0 left-0 w-screen h-full z-[-1]"></canvas>
+    <!-- Header/Navigation -->
+    <header class="fixed bg-[#20433f] dark:bg-gray-900 bg-opacity-90 backdrop-blur-sm w-full z-50 py-4 px-6 shadow-lg transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo Section -->
-            <h1 class="text-2xl md:text-3xl font-bold cursor-pointer select-none">
-                <i class="text-green-600">&lt;</i>Wambua<i class="text-green-400">&gt;</i>
+            <h1 class="text-2xl font-bold cursor-pointer">
+                <span class="text-green-600">&lt;</span><span class=" gradient-text">Wambua</span><span class="text-green-400">&gt;</span>
             </h1>
 
-            <!-- Navigation Section -->
-            <nav class="flex items-center">
-                <!-- Full Menu for Medium Screens and Above -->
-                <div id="menu" class="hidden md:flex space-x-6">
-                    <a href="#" class="text-lg hover:text-indigo-300 transition duration-300">About</a>
-                    <a href="#skills" class="text-lg hover:text-indigo-300 transition duration-300">Skills</a>
-                    <a href="#projects" class="text-lg hover:text-indigo-300 transition duration-300">Projects</a>
-                    <a href="#journey" class="text-lg hover:text-indigo-300 transition duration-300">Journey</a>
-                    <a href="#additional-info" class="text-lg hover:text-indigo-300 transition duration-300">More</a>
-                    <a href="#contact" class="text-lg hover:text-indigo-300 transition duration-300">Contact</a>
-                    <a href="aichat.html" class="text-lg hover:text-indigo-300 transition duration-300">AI Chat</a>
-                </div>
-
-                <!-- Menu Button for Small Devices -->
-                <button id="dropdown-button" class="md:hidden ml-4 px-4 py-2 rounded-md bg-cyan-400 focus:outline-none" type="button">
-                    <i class="fas fa-bars"></i>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-white dark:text-[#c9d1d8] text-lg hover:text-indigo-300 transition duration-300">About</a>
+                <a href="#skills" class="text-white dark:text-[#c9d1d8] text-lg hover:text-indigo-300 transition duration-300">Skills</a>
+                <a href="#projects" class="text-white dark:text-[#c9d1d8] text-lg hover:text-indigo-300 transition duration-300">Projects</a>
+                <a href="#journey" class="text-white dark:text-[#c9d1d8] text-lg hover:text-indigo-300 transition duration-300">Journey</a>
+                <a href="#contact" class="text-white dark:text-[#c9d1d8] text-lg hover:text-indigo-300 transition duration-300">Contact</a>
+                <a href="aichat.html" class="text-white dark:text-[#c9d1d8] px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition">AI Chat</a>
+                <button id="theme-toggle" class="theme-toggle w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                    <i class="fas fa-moon text-yellow-300" id="theme-icon"></i>
                 </button>
             </nav>
+
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
 
-        <!-- Dropdown Menu for Small Screens -->
-        <div id="dropdown-menu" class="hidden fixed mt-2 rounded-md shadow-lg border-2 border-pink-500 bg-white text-gray-800 z-50 w-fit ml-4 p-6">
-            <ul class="space-y-2">
-                <li><a href="#" class="block text-lg hover:text-indigo-300 transition duration-300">About</a></li>
-                <li><a href="#skills" class="block text-lg hover:text-indigo-300 transition duration-300">Skills</a></li>
-                <li><a href="#projects" class="block text-lg hover:text-indigo-300 transition duration-300">Projects</a></li>
-                <li><a href="#journey" class="block text-lg hover:text-indigo-300 transition duration-300">Journey</a></li>
-                <li><a href="#additional-info" class="block text-lg hover:text-indigo-300 transition duration-300">More</a></li>
-                <li><a href="#contact" class="block text-lg hover:text-indigo-300 transition duration-300">Contact</a></li>
-                <li><a href="aichat.html" class="block text-lg hover:text-indigo-300 transition duration-300">AI Chat</a></li>
-            </ul>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full py-4 px-6 transition-all duration-300" style="background: var(--header-bg); backdrop-filter: blur(10px);">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="text-black dark:text-indigo-800 text-lg hover:text-indigo-300 transition duration-300">About</a>
+                <a href="#skills" class="text-lg hover:text-indigo-300 transition duration-300">Skills</a>
+                <a href="#projects" class="text-lg hover:text-indigo-300 transition duration-300">Projects</a>
+                <a href="#journey" class="text-lg hover:text-indigo-300 transition duration-300">Journey</a>
+                <a href="#contact" class="text-lg hover:text-indigo-300 transition duration-300">Contact</a>
+                <a href="aichat.html" class="px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition text-center">AI Chat</a>
+                <div class="flex justify-center">
+                    <button id="theme-toggle-mobile" class="theme-toggle w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                        <i class="fas fa-moon text-yellow-300" id="theme-icon-mobile"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Main Content Section -->
-    <section class="px-2 md:px-6 pt-2 md:pt-4">
-        <div class="text-center mb-10 hidden">
-            <h2 class="text-4xl font-bold text-indigo-600">Portfolio</h2>
-        </div>
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center relative pt-20 pb-10 px-4">
+        <div class="container mx-auto text-center z-10">
+            <div class="floating mb-8">
+                <div class="relative w-48 h-48 rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-00 mx-auto shadow-2xl flex items-center justify-center z-[-1] backdrop-inver">
+                    <canvas id="sphere-canvas" class="absolute z-1 h-48 w-48 rounded-full"></canvas>
+                    <span class="text-6xl text-text-secondary dark:text-white z-1">W</span>
+                </div>
+            </div>
 
-        <!-- Stats Section -->
-        <div class="flex justify-center space-x-8 mb-4 md:mb-8">
-            <div class="text-center">
-            <a href="#projects">
-                <div class="h-fit text-2xl md:text-3xl lg:text-4xl font-bold text-indigo-950 bg-gradient-to-br from-blue-500 to-pink-500 rounded-full p-2 shadow-md flex items-center justify-center aspect-square transition-all duration-500 transform hover:scale-105 hover:rotate-720 hover:opacity-80 shadow-md hover:shadow-xl">10+</div>
-                <div class="text-md md:text-lg text-gray-600">Projects</div>
+            <h2 class="text-5xl md:text-6xl font-bold mb-6">
+                <span class="gradient-text">Software Developer</span> & <span class="gradient-text">AI Enthusiast</span>
+            </h2>
+
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10" style="color: var(--text-secondary);">
+                I create innovative solutions that blend cutting-edge technology with elegant design.
+            </p>
+
+            <div class="typewriter text-xl md:text-2xl mb-12" style="color: var(--text-secondary);">
+                Passionate about Python, Django, and AI technologies.
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 mt-2">
+                <a href="#projects" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-semibold transition transform hover:-translate-y-1">
+                    View My Work
+                </a>
+                <a href="#contact" class="px-8 py-3 border-2 border-indigo-600 text-indigo-400 hover:bg-indigo-600 hover:text-white rounded-lg font-semibold transition transform hover:-translate-y-1">
+                    Contact Me
                 </a>
             </div>
-            <div class="text-center">
-            <a href="#skills">
-                <div class="h-fit text-2xl md:text-3xl lg:text-4xl font-bold text-purple-800 bg-gradient-to-br from-blue-500 to-purple-500 bg-gradient-to-tl from-green-400 to-yellow-500 rounded-full p-2 shadow-md flex items-center justify-center aspect-square transition-transform duration-300 transform hover:scale-105 shadow-md hover:shadow-xl transition-opacity duration-300 hover:opacity-90">10+</div>
-                <div class="text-md md:text-lg text-gray-600">Skills</div>
-                </a>
-            </div>
-            <div class="text-center">
-            <a href="#journey">
-                <div class="h-fit max-h-20 text-2xl md:text-3xl lg:text-4xl font-bold text-purple-900 bg-gradient-to-tl from-orange-400 to-yellow-500 rounded-full p-2 shadow-md flex items-center justify-center aspect-square transition-transform duration-300 transform hover:scale-105 shadow-md hover:shadow-xl transition-opacity duration-300 hover:opacity-90">10+</div>
-                <div class="text-md md:text-lg text-gray-600"><a href="">Achievements</a></div>
-            </a>
-            </div>
         </div>
-
-        <!-- Skills Cards Section -->
-        <section id="skills" class="w-full bg-gradient-to-br from-pink-400 via-indigo-200 via-sky-700 to-blue-400 p-6 rounded-md">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6 w-full">
-                <div class="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
-                    <h3 class="text-2xl font-bold text-indigo-500 mb-4">Skills</h3>
-                    <div id="skills_sec" class="grid grid-flow-row hover:grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 whitespace-pre-wrap my-4 space-y-2 space-x-2"></div>
-                    <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-400 text-white rounded-lg font-semibold transition duration-300">More Details</button>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition transform hover:scale-105 duration-300">
-                    <h3 class="text-2xl font-bold text-purple-500 mb-4">Additional Skills</h3>
-                    <p class="text-gray-700 mb-6">Additional skills and proficiencies in various domains.</p>
-                    <button class="px-4 py-2 bg-purple-500 hover:bg-purple-400 text-white rounded-lg font-semibold transition duration-300">More Details</button>
-                </div>
-            </div>
-        </section>
-        <section id="git_troph" class="bg-gradient-to-tl from-blue-400 via-indigo-900 to-orange-500 mt-2 p-8 rounded-md items-center justify-center">
-            <p class="font-bold text-center text-lg p-1 m-0">🏆 GitHub Trophies</p>
-        </section>
-
-
-    <!-- Projects Section with Gradient Background -->
-    <section id="projects" class="px-auto py-6 md:px-6 mx-1 md:mx-6 my-4 bg-gradient-to-br bg-gradient-to-r from-[#008fd1] via-cyan-400 to-blue-300 rounded-md shadow-md shadow-gray-400 hover:shadow-lg">
-        <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-2">
-            <!-- QuickAi Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6H18l-4.16 2.51.57 6.02L12 16.25l-6.09 3.73.57-6.02L6 10.51h2.91L12 2zm0 12l-2.36-1.71L1.82 4h8.36L12 8.79l2.88-2.57H22.18l-3.89 6.76L12 14z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">QuickAi</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        A versatile AI assistant designed to assist with various tasks. QuickAi leverages advanced machine learning models to provide accurate and efficient solutions, making it suitable for both new applications and integration into existing projects.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Encryptionsuite Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm3-8h-1.5V7h-3v3H9v1.5h3V15h1.5V11.5zm-6 0H7v-6h1.5v4.5h3V7H15v1.5h-3v3H9z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">Encryptionsuite</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        A command-line tool for encrypting and decrypting files and folders. It secures data through obfuscate encryption using personal secret keys and allows for multiple encryption layers, enabling content to be encrypted up to three times. Users are advised to handle encryption keys carefully to prevent data loss.
-                    </p>
-                </div>
-            </div>
-
-            <!-- AFReader Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12v-2H6V4h8c1.1 0 2-.9 2-2zm0 18H6V4h8v16zm2-8c0-.11-.01-.22-.03-.33l1.44-1.81c.19-.26.1-.59-.14-.8-.24-.2-.56-.28-.84-.21L14.13 11l-2.67-3.22c-.28-.34-.62-.51-1-.51-.38 0-.73.17-.9.45L9.88 9h2.9c0 .61.49 1.1 1.1 1.1.21 0 .42-.08.59-.22l1.57-1.89.89 1.1c.1.13.25.2.4.2.26 0 .49-.21.59-.49l1-1.21c.17-.24.34-.42.53-.53l.99-.8c.37-.3.81-.48 1.3-.48.5 0 .94.18 1.3.48l1.93 1.45c.47.36.47 1.02 0 1.38l-1.92 1.44c-.46.35-1.01.53-1.6.53-.6 0-1.14-.18-1.59-.53l-1.53-1.13c-.37-.27-.89-.26-1.26.01s-.28.8-.01 1.18l.91 1.21c.12.17.27.3.44.3.25 0 .5-.12.67-.29l1.94-1.94c.24-.26.24-.67 0-.93l-1.8-1.78c-.29-.29-.76-.3-1.15-.01s-.87.66-.6.94l1.04 1.45c.17.24.27.53.27.84zm-1.2-.35c0-.2-.08-.38-.22-.51l-1.44-1.81c-.19-.26-.1-.59.14-.8.24-.2.56-.28.84-.21l.86.66L12 10.5l-2.67-3.22c-.28-.34-.62-.51-1-.51-.38 0-.73.17-.9.45L7.84 9h2.9c0 .61.49 1.1 1.1 1.1.21 0 .42-.08.59-.22l1.57-1.89.89 1.1c.1.13.25.2.4.2.26 0 .49-.21.59-.49l1-1.21c.17-.24.34-.42.53-.53l.99-.8c.37-.3.81-.48 1.3-.48.5 0 .94.18 1.3.48l1.93 1.45c.47.36.47 1.02 0 1.38l-1.92 1.44c-.46.35-1.01.53-1.6.53-.6 0-1.14-.18-1.59-.53l-1.53-1.13c-.37-.27-.89-.26-1.26.01s-.28.8-.01 1.18l.91 1.21c.12.17.27.3.44.3.25 0 .5-.12.67-.29l1.94-1.94c.24-.26.24-.67 0-.93l-1.8-1.78c-.29-.29-.76-.3-1.15-.01s-.87.66-.6.94l1.04 1.45c.17.24.27.53.27.84z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">AFReader</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        A command-line tool that animates and displays file content, allowing for easy reading from the terminal. Users can install the tool via pip and utilize it to read files with animated effects directly in the command line.
-                    </p>
-                </div>
-            </div>
-
-            <!-- ThreatHunter Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-9h-3V5h-2v6H8l4 4 4-4z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">ThreatHunter</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        A project focused on threat detection using YARA rules. It enables malware detection and analysis of files and folders for known malware types, assisting in identifying and mitigating potential threats.
-                    </p>
-                </div>
-            </div>
-
-            <!-- fconverter Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2v1.99c-2.76.3-4.7 2.54-4.7 5.21 0 2.94 2.34 5.27 5.2 5.27s5.27-2.33 5.27-5.27c0-2.67-1.94-4.91-4.69-5.21V7c.55-.11 1.02-.35 1.38-.68.76-.76.76-2.03 0-2.79zM2 4.2C1.45 4.2.88 4.48.46 4.92l.72.72C1.54 5.18 2 5.78 2 6.5S2.45 7.8 3 8.27l1.53-1.53C4.03 6.45 4 6 .93 5.07 1.85 3.22 4.88 2 8 2s6.15 1.25 7.07 3.07-.93 1.93-2.07 3.07l-1.53-1.53c.67-.67 1.27-1.5 1.27-2.27 0-1.39-1.11-2.5-2.5-2.5S8.7 5 8.7 6.39s1.11 2.5 2.5 2.5l1.5-1.5c.36.36.36.97 0 1.33l-1.5 1.5c-.22.22-.52.34-.83.34-.67 0-1.27-.36-1.53-.92l-1.34 1.34C6.45 16.55 5.11 18 3 18c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2s2 .9 2 2c0 .89-.3 1.7-.83 2.28l1.5-1.5c.56-.57 1.41-.89 2.28-.89.55 0 1.07.22 1.42.58l.83.82c-.91.73-1.63 1.8-1.96 2.96l-.83-.82c-.35-.36-.58-.86-.58-1.42 0-1.1.9-2 2-2 .55 0 1.02.24 1.38.68C21.55 9.4 22 8.83 22 8c0-2.76-2.24-5-5-5-1.1 0-2 .9-2 2v1.99C13.43 9.46 14 10.06 14 11c0 1.1-.45 2.1-1.17 2.83L12 14.25z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">fconverter</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        A Python-based command-line interface (CLI) utility designed for converting documents between various formats. It supports conversions such as Word to PDF, PDF to Word, Word to PPT, Word to TXT, PDF to TXT, PPT to Word, TXT to Word, TXT to MP3 (using Google Text-to-Speech), image enhancement to grayscale, and XLSX to CSV. The tool is installable via pip and offers a range of options for different file conversions.
-                    </p>
-                </div>
-            </div>
-            <!-- CryptoSharePKI Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm5-5h-2v-2h2v2zm-5 0h-2v-2h2v2zm5-3h-2v-2h2v2zm-5 0h-2v-2h2v2zm-5 3h-2v-2h2v2zm0-5h-2v-2h2v2z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">CryptoSharePKI</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        This project implements a Public Key Infrastructure (PKI) system. It includes scripts and tools for generating and managing certificates, setting up root and intermediate certificate authorities, and distributing certificates. The repository contains various Python scripts and configuration files essential for establishing a PKI system.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Agrimax Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2v1.99c-2.76.3-4.7 2.54-4.7 5.21 0 2.94 2.34 5.27 5.2 5.27s5.27-2.33 5.27-5.27c0-2.67-1.94-4.91-4.69-5.21V7c.55-.11 1.02-.35 1.38-.68.76-.76.76-2.03 0-2.79zM2 4.2C1.45 4.2.88 4.48.46 4.92l.72.72C1.54 5.18 2 5.78 2 6.5S1.45 7.8 3 8.27l1.53-1.53C4.03 6.45 4 6 .93 5.07 1.85 3.22 4.88 2 8 2s6.15 1.25 7.07 3.07-.93 1.93-2.07 3.07l-1.53-1.53c.67-.67 1.27-1.5 1.27-2.27 0-1.39-1.11-2.5-2.5-2.5S8.7 5 8.7 6.39s1.11 2.5 2.5 2.5l1.5-1.5c.36.36.36.97 0 1.33l-1.5 1.5c-.22.22-.52.34-.83.34-.67 0-1.27-.36-1.53-.92l-1.34 1.34C6.45 16.55 5.11 18 3 18c-1.1 0-2-.9-2-2 0-1.1.9-2 2-2s2 .9 2 2c0 .89-.3 1.7-.83 2.28l1.5-1.5c.56-.57 1.41-.89 2.28-.89.55 0 1.07.22 1.42.58l.83.82c-.91.73-1.63 1.8-1.96 2.96l-.83-.82c-.35-.36-.58-.86-.58-1.42 0-1.1.9-2 2-2 .55 0 1.02.24 1.38.68C21.55 9.4 22 8.83 22 8c0-2.76-2.24-5-5-5-1.1 0-2 .9-2 2v1.99C13.43 9.46 14 10.06 14 11c0 1.1-.45 2.1-1.17 2.83L12 14.25z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">Agrimax</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        A comprehensive Crop Recommendation and Field Management System aimed at empowering farmers with data-driven decisions to enhance crop yield and farm management. Agrimax integrates soil health analysis, weather forecasting, and crop recommendation features to assist users in making informed agricultural choices. Key functionalities include suggesting optimal crops based on soil nutrients and environmental factors, evaluating soil health with actionable insights, and providing weather forecasts to inform farming activities.
-                    </p>
-                </div>
-            </div>
-
-            <!-- NetPilot Card -->
-            <div class="max-w-fit dark:bg-gray-800 bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-pattern-vintage dark:bg-pattern-vintage">
-                <div class="flex items-center justify-center p-4 aspect-w-1 aspect-h-1 bg-gray-200 dark:bg-gray-700">
-                    <svg class="w-20 h-20 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm5-5h-2v-2h2v2zm-5 0h-2v-2h2v2zm5-3h-2v-2h2v2zm-5 0h-2v-2h2v2zm-5 3h-2v-2h2v2zm0-5h-2v-2h2v2zm5 0h-2v-2h2v2zm0-3h-2v-2h2v2zm-5 0h-2v-2h2v2zm-5 3h-2v-2h2v2zm0-5h-2v-2h2v2zm5 0h-2v-2h2v2z"/>
-                    </svg>
-                </div>
-                <div class="px-6 py-4">
-                    <div class="font-bold text-2xl mb-2 text-gray-800 dark:text-white">NetPilot</div>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">
-                        An advanced security auditing, information harvesting, and privacy enforcement tool. This project is currently under development and aims to provide comprehensive solutions for security assessments and privacy management.
-                    </p>
-                </div>
-            </div>
     </section>
 
-    <section id="top-repos"  class="hidden grid grid-flow-row-col md:flex md:flex-flow-row-col bg-gradient-to-tr from-rose-600 via-indigo-400 to-amber-400 shadow-md rounded-md mt-2 mx-4">
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 relative">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Skills & Expertise</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="relative bg-white dark:bg-[#161b22]/0 rounded-2xl p-8 transition-transform transition-all hover:translate-y-[-10px] duration-300 shadow-xl shadow-[#00000]">
+                    <div class="hidden dark:block card-bg-animate absolute z-[-1] top-0 left-0 right-0 bottom-0 border-2 border-cyan-400 rounded-2xl w-full"></div>
+                    <div class="hidden dark:block bg-[#171722]/70 absolute z-[0] mx-auto top-[-2px] left-[2px] right-[-2px] bottom-[2px] w-full rounded-2xl"></div>
+                    <section class="absolute z-[1] w-full h-full top-0 left-0 right-0 bottom-0 p-6 backdrop-contrast-150">
+                        <h3 class="text-2xl font-bold mb-6 flex items-center" style="color: var(--accent-primary);">
+                            <i class="fas fa-code mr-3"></i> Technical Skills
+                        </h3>
+                        <div class="flex flex-wrap">
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Python</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Django</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">JavaScript</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">React</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Tailwind CSS</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">PostgreSQL</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Git</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Docker</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">REST APIs</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">AI/ML</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Cybersecurity</span>
+                            <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Linux</span>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="relative bg-white dark:bg-[#161b22]/0 rounded-2xl p-8 transition-transform transition-all hover:translate-y-[-10px] duration-300 shadow-xl shadow-[#00000] border-x-4 border-y-2 border-t-0 border-x-cyan-400 border-y-none">
+                    <div class="hidden dark:block card-bg-animate absolute z-[-1] top-0 left-0 right-0 bottom-0 rounded-2xl w-full"></div>
+                    <div class="hidden dark:block bg-[#171722]/70 absolute z-[0] mx-auto top-0 left-0 right-0 bottom-0 w-full rounded-2xl"></div>
+                        <section class=" z-[1] w-full h-full top-0 left-0 right-0 bottom-0 p-6 backdrop-saturate-[1]">
+                            <h3 class="text-2xl font-bold mb-6 flex items-center" style="color: var(--accent-primary);">
+                                <i class="fas fa-code mr-3"></i> Technical Skills
+                            </h3>
+                            <div class="flex flex-wrap">
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Python</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Django</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">JavaScript</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">React</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Tailwind CSS</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">PostgreSQL</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Git</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Docker</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">REST APIs</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">AI/ML</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Cybersecurity</span>
+                                <span class="text-[#1e293b] dark:text-[#c9d1d9] bg-[#6C63FF] bg-opacity-10 hover:bg-opacity-30 hover block m-1 p-2 rounded-full transition-all duration-300 hover:scale-105">Linux</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 section-bg">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-indigo-950 rounded-2xl p-6 p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">QuickAi</h3>
+                    <p class="mb-4" style="color: var(--text-secondary);">A versatile AI assistant designed to assist with various tasks using advanced machine learning models.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">AI</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">ML</span>
+                    </div>
+                    <a href="#" class="flex items-center text-indigo-400 hover:text-indigo-300">
+                        View Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white dark:bg-[#55007f] rounded-2xl border-cyan-500 p-6 card-hover p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-lock text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">Encryptionsuite</h3>
+                    <p class="mb-4" style="color: var(--text-secondary);">A command-line tool for encrypting and decrypting files and folders with multiple encryption layers.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">Security</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">CLI</span>
+                    </div>
+                    <a href="#" class="flex items-center text-green-400 hover:text-green-300">
+                        View Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white dark:bg-[#004261] rounded-2xl border border-cyan-500 backdrop-invert p-6 card-hover p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg mb-6 flex items-center justify-center">
+                        <i class="fas fa-file-alt text-6xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">AFReader</h3>
+                    <p class="mb-4" style="color: var(--text-secondary);">A command-line tool that animates and displays file content for easy reading from the terminal.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">Python</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">CLI</span>
+                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">Animation</span>
+                    </div>
+                    <a href="#" class="flex items-center text-blue-400 hover:text-blue-300">
+                        View Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-semibold transition">
+                    View All Projects
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- Journey Section -->
-    <section id="journey" class="py-6 px-6 my-4 md:my-6 mx-1 md:mx-6 rounded-md bg-gradient-to-br from-blue-50 via-purple-50 to-sky-50">
-        <h2 class="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800">
-            My Journey
-        </h2>
+    <section id="journey" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">My Journey</h2>
 
-        <div class="max-w-4xl mx-auto">
-            <!-- Timeline Container -->
-            <div class="relative border-l border-gray-300">
-                <!-- Career Start -->
-                <div class="mb-10 ml-6">
-                    <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full -ml-6 text-white">
-                        <i class="fas fa-rocket"></i>
+            <div class="max-w-4xl mx-auto">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot">
+                        <i class="fas fa-rocket text-xs"></i>
                     </div>
-                    <div class="mt-2">
-                        <h3 class="text-xl font-semibold text-gray-800">Started My Career</h3>
-                        <span class="block text-sm text-gray-500">2021 - 2022</span>
-                        <p class="mt-2 text-gray-700">
+                    <div class="timeline-content">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--text-primary);">Started My Career</h3>
+                        <span style="color: var(--accent-primary);">2021 - 2022</span>
+                        <p class="mt-4" style="color: var(--text-secondary);">
                             Embarked on my learning journey in quest for proficiency in software engineering.
-                            <br><b>Learning Events:</b>
-                            <ul class="mt-2 list-disc pl-6 divide-y divide-gray-200 relative space-y-2">
-                                <li class="py-1 font-medium text-gray-700 hover:text-teal-600 transition-colors duration-300 relative">
-                                    🖥️ Introduction to computers (hardware, software).
-                                    <span class="absolute inset-0 bg-teal-600 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-sky-600 transition-colors duration-300 relative">
-                                    💻 Introduction to computer programming
-                                    <span class="absolute inset-0 bg-sky-600 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-teal-700 transition-colors duration-300 relative bg-gradient-to-r from-teal-600 to-blue-900 text-transparent bg-clip-text">
-                                    ⚙️ Introduction to software development
-                                    <span class="absolute inset-0 bg-gradient-to-r from-teal-600 to-blue-900 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-teal-700 transition-colors duration-300 relative">
-                                    🌐 Introduction to web technologies.
-                                    <span class="absolute inset-0 bg-teal-700 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-sky-600 transition-colors duration-300 relative">
-                                    🤖 Digital logic
-                                    <span class="absolute inset-0 bg-sky-600 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-teal-700 transition-colors duration-300 relative">
-                                    🔧 Fundamentals of ICT
-                                    <span class="absolute inset-0 bg-teal-700 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-sky-600 transition-colors duration-300 relative">
-                                    🌐 Data communications and networks
-                                    <span class="absolute inset-0 bg-sky-600 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-teal-700 transition-colors duration-300 relative">
-                                    🗂️ Fundamentals of DBMS (Database management systems)
-                                    <span class="absolute inset-0 bg-teal-700 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                                <li class="py-1 font-medium text-gray-700 hover:text-sky-600 transition-colors duration-300 relative">
-                                    📈 Software requirement engineering
-                                    <span class="absolute inset-0 bg-sky-600 opacity-0 hover:opacity-20 transition-opacity duration-300"></span>
-                                </li>
-                            </ul>
                         </p>
+                        <div class="mt-4 grid grid-cols-2 gap-2">
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-code mr-2"></i> Programming Basics</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-globe mr-2"></i> Web Technologies</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-database mr-2"></i> Database Systems</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-network-wired mr-2"></i> Networking</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Internship Milestone -->
-                <div class="mb-10 ml-6">
-                    <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full -ml-6 text-white">
-                        <i class="fas fa-laptop-code"></i>
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot">
+                        <i class="fas fa-laptop-code text-xs"></i>
                     </div>
-                    <div class="mt-2">
-                        <h3 class="text-xl font-semibold text-gray-800">Web Developer Internship</h3>
-                        <span class="block text-sm text-gray-500">2022 - 2023</span>
-                        <p class="mt-2 text-gray-700">Completed an internship focusing on practical applications of web development, enhancing my skills with real-world projects.
-                        <br><b>Learning Events:</b>
-                            <ul class="ml-4 divide-y divide-gray-200">
-                                <li class="even:text-teal-700 odd:text-sky-600  even:hover:bg-emerald-200 odd:hover:bg-purple-300 flex items-center gap-2 py-2">
-                                    <span>🐍</span> Learning Python programming_basics.
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-400 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>🌟</span>Introduction to computer_programming (C_programming)
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>💻</span>Introduction to software development
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>🛒</span>E-Commerce
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>📡</span>Wireless Technology
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>🖥️</span>Operating System (OS)
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>🐍</span>Mastering Python programming
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>🔥</span>Learning Django framework basics
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>💻</span>Client-side Programming
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>🔍</span>Advanced database    </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>👩‍💻</span>Human-centered computer interactions
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-centerGap-2 py-2">
-                                    <span>📊</span>Management Information systems
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 even:hover:bg-emerald-200 odd:hover:bg-pink-100 flex items-center gap-2 py-2">
-                                    <span>🔍</span>LearnedAutomatedsoftware testing using Selenium 4.
-                                </li>
-                            </ul>
+                    <div class="timeline-content">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--text-primary);">Web Developer Internship</h3>
+                        <span style="color: var(--accent-primary);">2022 - 2023</span>
+                        <p class="mt-4" style="color: var(--text-secondary);">
+                            Completed an internship focusing on practical applications of web development.
                         </p>
+                        <div class="mt-4 grid grid-cols-2 gap-2">
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fab fa-python mr-2"></i> Python</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fab fa-js mr-2"></i> JavaScript</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-server mr-2"></i> Django</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-vial mr-2"></i> Testing</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Skill Development -->
-                <div class="mb-10 ml-6">
-                    <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full -ml-6 text-white">
-                        <i class="fas fa-chart-line"></i>
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot">
+                        <i class="fas fa-chart-line text-xs"></i>
                     </div>
-                    <div class="mt-2">
-                        <h3 class="text-xl font-semibold text-gray-800">Advanced in Django &AMP; Python</h3>
-                        <span class="block text-sm text-gray-500">2023 - 2024</span>
-                        <p class="mt-2 text-gray-700">Achieved a higher level of expertise in Django and Python, working on complex backend projects and solidifying my understanding of web frameworks.
-                        <br><b>Learning Events:</b>
-                            <ul class="ml-4 divide-y divide-gray-200">
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>🔥</span> Mastered Django framework
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>🌐</span> NodeJS Framework
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>🎨</span> Mastered TailwindCSS
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>📚</span> Introduction to Java OOP (Object-Oriented Programming)
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>💻</span> Mastering component-based software engineering
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>🔧</span> Data systems administration
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>📊</span> Design and analysis of algorithms
-                                </li>
-                                <li class="even:text-teal-700 odd:text-spsy-600 flexitems-centergap-2 py-2 even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>🤖</span> Basics of artificial intelligence
-                                </li>
-                                <li class="even:text-teal-700 odd:text-sky-600 flex items-center gap-2 py-2 even:hover:bg-amber-100 odd:hover:bg-blue-100 transition-colors duration-300">
-                                    <span>🌐</span> Mastering Huggingface
-                                </li>
-                            </ul>
+                    <div class="timeline-content">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--text-primary);">Advanced in Django & Python</h3>
+                        <span style="color: var(--accent-primary);">2023 - 2024</span>
+                        <p class="mt-4" style="color: var(--text-secondary);">
+                            Achieved a higher level of expertise in Django and Python, working on complex backend projects.
                         </p>
+                        <div class="mt-4 grid grid-cols-2 gap-2">
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-brain mr-2"></i> AI/ML</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fab fa-node-js mr-2"></i> Node.js</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-paint-brush mr-2"></i> Tailwind CSS</span>
+                            <span class="text-sm" style="color: var(--text-secondary);"><i class="fas fa-shield-alt mr-2"></i> Security</span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Major Project Highlight -->
-                <div class="mb-10 ml-6">
-                    <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full -ml-6 text-white">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <div class="mt-2">
-                        <h3 class="text-xl font-semibold text-gray-800">Project Highlights</h3>
-                        <span class="block text-sm text-gray-500"></span>
-                        <p class="mt-2 text-gray-700">Successfully completed projects in building a full-stack web application and other fields, showcasing my skills in project management and technical expertise.</p>
-                        <a href="#projects" class="text-blue-600 hover:text-blue-800 hover:underline">Click to View</a>
-                    </div>
-                </div>
-
-                <!-- Current Focus -->
-                <div class="mb-10 ml-6">
-                    <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full -ml-6 text-white">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <div class="mt-2">
-                        <h3 class="text-xl font-semibold text-gray-800">Ongoing Learning</h3>
-                        <span class="block text-sm text-gray-500">2024 - Present</span>
-                        <p class="mt-2 text-gray-700">Focusing on advanced Python applications and exploring emerging fields in AI and cybersecurity to enhance my technical scope and expertise.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Additional Information Section -->
-    <section id="additional-info" class="py-12 my-4 md:my-6 px-6 mx-1 md:mx-6 rounded-md bg-gradient-to-br from-sky-100 via-blue-50 to-purple-100">
-        <h2 class="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-purple-900">
-            Additional Information
-        </h2>
-
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Additional Skills -->
-            <div class="bg-gradient-to-r from-blue-50 via-purple-50 to-sky-50 p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out">
-                <h3 class="text-2xl font-semibold text-blue-900 mb-4">Additional Skills</h3>
-                <p class="text-gray-700">Beyond core web development, I’m proficient in cybersecurity, system automation, and command-line utilities. I'm also exploring AI and data science to broaden my expertise.</p>
-            </div>
-
-            <!-- Certifications & Achievements -->
-            <div class="bg-gradient-to-r from-purple-50 via-blue-50 to-sky-50 p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out">
-                <h3 class="text-2xl font-semibold text-blue-900 mb-4">Certifications &AMP; Achievements</h3>
-                <ul class="list-disc list-inside mt-2 text-gray-700 space-y-2">
-                    <li>Certified in Python for Data Science and Machine Learning.</li>
-                    <li>Full-stack web development certification (Django focus).</li>
-                    <li class="hidden">Winner of hackathon focused on secure file-sharing solutions.</li>
-                </ul>
-                <ul class="list-disc list-inside mt-2 ml-6 text-blue-700 space-y-2">
-                    <li><a target="_blank" href="https://cert.efset.org/2tyeDd">C1 advanced Certificate</a></li>
-                    <li><a target="_blank" href="https://www.hackerrank.com/certificates/89e6463e441b">Python (Basics)</a></li>
-                </ul>
-            </div>
-
-            <!-- Hobbies & Interests -->
-            <div class="bg-gradient-to-r from-sky-50 via-purple-50 to-blue-50 p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out">
-                <h3 class="text-2xl font-semibold text-blue-900 mb-4">Hobbies &AMP; Interests</h3>
-                <p class="text-gray-700">I enjoy experimenting with open-source security tools on Kali Linux, creating digital art, and exploring new music genres to stay inspired and motivated.</p>
-            </div>
-
-            <!-- Volunteer Work -->
-            <div class="bg-gradient-to-r from-blue-50 via-sky-50 to-purple-50 p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 duration-200 ease-in-out">
-                <h3 class="text-2xl font-semibold text-blue-900 mb-4">Volunteer Work</h3>
-                <p class="text-gray-700">I actively participate in community coding events, mentor novice programmers, and contribute to local tech initiatives aimed at enhancing digital literacy.</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="p-10 mx-1 md:mx-6 rounded-md bg-gradient-to-r from-blue-100 via-purple-50 to-sky-100">
-        <h2 class="text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-800">
-            Contact Me
-        </h2>
+    <section id="contact" class="py-20 px-4 section-bg">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Get In Touch</h2>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Contact Form Section -->
-            <div class="max-w-fit lg:max-w-lg xl:max-w-xl bg-white bg-opacity-80 p-8 rounded-lg shadow-lg">
-                <form action="https://formspree.io/f/{your-form-id}" method="POST" class="space-x-2 md:space-y-6">
-                    <div>
-                        <label for="name" class="block text-lg font-semibold text-gray-700">Name</label>
-                        <input type="text" id="name" name="name" required
-                            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"/>
-                    </div>
-                    <div>
-                        <label for="email" class="block text-lg font-semibold text-gray-700">Email</label>
-                        <input type="email" id="email" name="email" required
-                            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"/>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-lg font-semibold text-gray-700">Message</label>
-                        <textarea id="message" name="message" rows="4" required
-                            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
-                    </div>
-                    <button type="submit"
-                        class="w-full py-3 px-6 font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-blue-700 hover:to-purple-700 transition duration-200 ease-in-out">
-                        Send Message
-                    </button>
-                </form>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6" style="color: var(--text-primary);">Let's work together</h3>
+                    <p class="mb-8" style="color: var(--text-secondary);">
+                        I'm always interested in new opportunities, whether it's a freelance project, collaboration, or full-time position.
+                    </p>
 
-                <!-- Main Social Links -->
-                <div class="flex justify-center mt-10 space-x-6 md:space-x-12">
-                    <a href="https://github.com/skye-cyber" target="_blank" class="text-gray-700 hover:text-blue-600">
-                        <i class="fab fa-github text-2xl"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/wambua-mwikya-0664442b3" target="_blank" class="text-gray-700 hover:text-blue-600">
-                        <i class="fab fa-linkedin text-2xl"></i>
-                    </a>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <p style="color: var(--text-secondary);">Email</p>
+                                <p style="color: var(--text-primary);">swskye17@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <p style="color: var(--text-secondary);">Location</p>
+                                <p style="color: var(--text-primary);">Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="text-xl font-semibold mb-4" style="color: var(--text-primary);">Follow me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
+                                <i class="fab fa-github" style="color: var(--text-primary);"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
+                                <i class="fab fa-linkedin-in" style="color: var(--text-primary);"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
+                                <i class="fab fa-twitter" style="color: var(--text-primary);"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
+                                <i class="fab fa-huggingface" style="color: var(--text-primary);"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="p-8 rounded-lg" style="background: var(--card-bg);">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2" style="color: var(--text-secondary);">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" style="background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--card-border);">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2" style="color: var(--text-secondary);">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" style="background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--card-border);">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2" style="color: var(--text-secondary);">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" style="background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--card-border);"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-semibold transition">
+                            Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Additional Socials Section -->
-            <div class="max-w-fit flex flex-col items-center justify-center bg-gradient-to-r from-purple-100 to-blue-100 p-8 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-blue-700 mb-4">
-                    Connect with Me
-                </h3>
-                <p class="text-gray-700 text-center mb-6">
-                    Find me on these platforms for more updates and collaborations!
-                </p>
-                <div class="flex space-x-6">
-                    <!-- Add more social icons as needed -->
-                    <a href="https://x.com/@SkyeSwskye17" target="_blank" class="text-gray-700 hover:text-purple-600">
-                        <i class="fab fa-twitter text-2xl"></i>
-                    </a>
-                    <a href="https://instagram.com/" target="_blank" class="text-gray-700 hover:text-pink-600">
-                        <i class="fab fa-instagram text-2xl"></i>
-                    </a>
-                    <a href="https://facebook.com/skye" target="_blank" class="text-gray-900 hover:text-blue-600">
-                        <i class="fab fa-facebook text-2xl"></i>
-                    </a>
-                    <a href="https://dribbble.com/your-profile" target="_blank" class="text-gray-700 hover:text-purple-500">
-                        <i class="fab fa-dribbble text-2xl"></i>
-                    </a>
-                    <a href="https://github.com/skye-cyber" target="_blank" class="text-gray-700 hover:text-purple-500">
-                        <i class="fab fa-github text-2xl"></i>
-                    </a>
-                    <a href="https://huggingface.com/skye-waves" target="_blank" class="text-gray-700 hover:text-purple-500">
-                        <svg class="fill-[#00557f] hover:fill-purple-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5m0-3l10-5-10-5zm12 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm-2-2l-8 8 8 8 8-8-8-8zm8-10l8 8-8 8-8-8 8-8z"/>
-                            <title>Hugged Face</title>
-                        </svg>
-                    </a>
-                </div>
+    <!-- Footer -->
+    <footer class="py-12 px-4" style="background: var(--bg-secondary);">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-4" style="color: var(--accent-primary);">SKYE</h2>
+            <p class="mb-6" style="color: var(--text-secondary);">Software Developer & AI Enthusiast</p>
+
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="transition" style="color: var(--text-secondary);">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="#" class="transition" style="color: var(--text-secondary);">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="#" class="transition" style="color: var(--text-secondary);">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="#" class="transition" style="color: var(--text-secondary);">
+                    <i class="fab fa-huggingface text-xl"></i>
+                </a>
             </div>
-        </section>
-    </section>
-    </section>
-    <!-- Footer Section -->
-    <footer class="text-center p-6 bg-gradient-to-r from-gray-900 via-cyan-800 to-black text-white mt-10">
-        <h2 class="text-2xl font-bold text-indigo-400"><a href="aichat.html">SKYE</a></h2>
-        <p class="text-gray-400">Software Developer</p>
+
+            <p class="text-sm" style="color: var(--text-secondary);">© 2025 Wambua. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>

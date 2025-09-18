@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Animation Showcase</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+      color: #c9d1d9;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: rgba(22, 27, 34, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #6C63FF;
+      text-shadow: 0 0 15px rgba(108, 99, 255, 0.5);
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #8b949e;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .animation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .animation-card {
+      background: rgba(22, 27, 34, 0.8);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .animation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      color: #56B9FF;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .card-title i {
+      margin-right: 10px;
+      font-size: 1.8rem;
+    }
+
+    .card-content {
+      flex-grow: 1;
+    }
+
+    .card-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .demo-btn {
+      display: inline-block;
+      background: linear-gradient(to right, #6C63FF, #564fd4);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    .demo-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+    }
+
+    .demo-container {
+      background: rgba(22, 27, 34, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-top: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #46E8B0;
+      margin-bottom: 2rem;
+    }
+
+    #animated-headline {
+      min-height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .headline {
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .headline-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 15s infinite linear;
+    }
+
+    /* Particle Canvas */
+    #particle-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Hover Effects Demo */
+    .hover-effects {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .hover-item {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #6C63FF 0%, #46E8B0 100%);
+      color: white;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hover-1:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
+    }
+
+    .hover-2:hover {
+      border-radius: 50%;
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(70, 232, 176, 0.4);
+    }
+
+    .hover-3:hover {
+      transform: skewX(-10deg);
+      box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+      background: linear-gradient(135deg, #FF6B6B 0%, #FFD700 100%);
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .bg-item {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6C63FF 0%, #46E8B0 100%);
+      opacity: 0.5;
+      animation: float-bg 20s infinite linear;
+    }
+
+    /* Keyframes */
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+      }
+    }
+
+    @keyframes float-bg {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(20px, 40px) rotate(180deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+
+    @keyframes typewriter {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Typewriter effect */
+    .typewriter {
+      overflow: hidden;
+      border-right: 0.15em solid #6C63FF;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 0.15em;
+      animation: typewriter 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: #6C63FF;
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+      color: #8b949e;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .animation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .headline {
+        font-size: 2.2rem;
+      }
+
+      .hover-effects {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="animated-bg" id="animated-bg"></div>
+
+  <div class="container">
+    <header>
+      <h1>Interactive Animation Showcase</h1>
+      <p class="subtitle">Engage your visitors with these captivating animations perfect for landing pages and portfolios</p>
+    </header>
+
+    <div class="animation-grid">
+      <div class="animation-card">
+        <h2 class="card-title"><i class="fas fa-text-height"></i> Typography Animations</h2>
+        <div class="card-content">
+          <p>Animated text effects that reveal your message with style. Use fading, sliding, or typewriter effects to draw attention to key content.</p>
+          <button class="demo-btn" onclick="activateDemo('typography')">Activate Demo</button>
+        </div>
+      </div>
+
+      <div class="animation-card">
+        <h2 class="card-title"><i class="fas fa-water"></i> Interactive Particles</h2>
+        <div class="card-content">
+          <p>Floating particles that respond to cursor movement. Creates an immersive experience that engages visitors.</p>
+          <button class="demo-btn" onclick="activateDemo('particles')">Activate Demo</button>
+        </div>
+      </div>
+
+      <div class="animation-card">
+        <h2 class="card-title"><i class="fas fa-mouse-pointer"></i> Hover Effects</h2>
+        <div class="card-content">
+          <p>Interactive elements that respond to user hover. Perfect for buttons, cards, and navigation elements.</p>
+          <button class="demo-btn" onclick="activateDemo('hover')">Activate Demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-container">
+      <h2 class="demo-title" id="demo-title">Animation Demo</h2>
+      <div id="animated-headline">
+        <div class="headline">
+          <span class="headline-word">Create.</span>
+          <span class="headline-word">Design.</span>
+          <span class="headline-word">Inspire.</span>
+        </div>
+        <div class="floating-shapes" id="floating-shapes">
+          <!-- Shapes will be generated by JavaScript -->
+        </div>
+      </div>
+
+      <div class="hover-effects" id="hover-effects" style="display: none;">
+        <div class="hover-item hover-1">Scale & Rotate</div>
+        <div class="hover-item hover-2">Circle & Lift</div>
+        <div class="hover-item hover-3">Skew & Recolor</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2023 Portfolio Animation Showcase | Designed for impact and engagement</p>
+  </footer>
+
+  <script>
+    // Create floating shapes for background
+    const floatingShapes = document.getElementById('floating-shapes');
+    const colors = ['#6C63FF', '#56B9FF', '#46E8B0', '#FFD700', '#FF6B6B'];
+
+    for (let i = 0; i < 15; i++) {
+      const shape = document.createElement('div');
+      shape.classList.add('shape');
+
+      // Random properties
+      const size = Math.random() * 60 + 20;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const animationDuration = Math.random() * 20 + 10;
+      const animationDelay = Math.random() * 5;
+
+      shape.style.width = `${size}px`;
+      shape.style.height = `${size}px`;
+      shape.style.background = color;
+      shape.style.left = `${left}%`;
+      shape.style.top = `${top}%`;
+      shape.style.animationDuration = `${animationDuration}s`;
+      shape.style.animationDelay = `-${animationDelay}s`;
+
+      floatingShapes.appendChild(shape);
+    }
+
+    // Create animated background elements
+    const animatedBg = document.getElementById('animated-bg');
+    for (let i = 0; i < 20; i++) {
+      const bgItem = document.createElement('div');
+      bgItem.classList.add('bg-item');
+
+      const size = Math.random() * 100 + 50;
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const animationDuration = Math.random() * 30 + 20;
+      const animationDelay = Math.random() * 10;
+
+      bgItem.style.width = `${size}px`;
+      bgItem.style.height = `${size}px`;
+      bgItem.style.left = `${left}%`;
+      bgItem.style.top = `${top}%`;
+      bgItem.style.animationDuration = `${animationDuration}s`;
+      bgItem.style.animationDelay = `-${animationDelay}s`;
+
+      animatedBg.appendChild(bgItem);
+    }
+
+    // Animate headline words
+    const headlineWords = document.querySelectorAll('.headline-word');
+
+    function animateWords() {
+      headlineWords.forEach((word, index) => {
+        setTimeout(() => {
+          word.style.opacity = 1;
+          word.style.transform = 'translateY(0)';
+          word.style.transition = 'opacity 1s ease, transform 1s ease';
+        }, index * 800);
+      });
+
+      // Reset animation after a delay
+      setTimeout(() => {
+        headlineWords.forEach(word => {
+          word.style.opacity = 0;
+          word.style.transform = 'translateY(20px)';
+        });
+
+        // Restart animation
+        setTimeout(animateWords, 1000);
+      }, 4000);
+    }
+
+    // Start the animation
+    animateWords();
+
+    // Particle canvas animation
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+
+    // Set canvas size
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+
+    // Create particles
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 5 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x > canvas.width || this.x < 0) {
+          this.speedX = -this.speedX;
+        }
+        if (this.y > canvas.height || this.y < 0) {
+          this.speedY = -this.speedY;
+        }
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for (let i = 0; i < 100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+
+      // Connect particles with lines
+      connectParticles();
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    function connectParticles() {
+      for (let a = 0; a < particlesArray.length; a++) {
+        for (let b = a; b < particlesArray.length; b++) {
+          const dx = particlesArray[a].x - particlesArray[b].x;
+          const dy = particlesArray[a].y - particlesArray[b].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 150) {
+            ctx.strokeStyle = `rgba(108, 99, 255, ${1 - distance/150})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // Initialize and animate particles
+    initParticles();
+    animateParticles();
+
+    // Demo activation functions
+    function activateDemo(type) {
+      const demoTitle = document.getElementById('demo-title');
+      const headline = document.querySelector('.headline');
+      const hoverEffects = document.getElementById('hover-effects');
+
+      // Reset all demos
+      headline.style.display = 'block';
+      hoverEffects.style.display = 'none';
+
+      // Activate selected demo
+      switch(type) {
+        case 'typography':
+          demoTitle.textContent = 'Typography Animation Demo';
+          headline.style.display = 'block';
+          break;
+        case 'particles':
+          demoTitle.textContent = 'Particle System Demo';
+          headline.style.display = 'block';
+          break;
+        case 'hover':
+          demoTitle.textContent = 'Hover Effects Demo';
+          headline.style.display = 'none';
+          hoverEffects.style.display = 'flex';
+          break;
+      }
+    }
+
+    // Make particles interactive
+    canvas.addEventListener('mousemove', (event) => {
+      const mouseX = event.x;
+      const mouseY = event.y;
+
+      for (let i = 0; i < 5; i++) {
+        particlesArray.push(new Particle());
+        particlesArray[particlesArray.length - 1].x = mouseX;
+        particlesArray[particlesArray.length - 1].y = mouseY;
+      }
+    });
+  </script>
+</body>
+</html>
