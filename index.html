@@ -6,7 +6,7 @@
     <title>Wambua - Portfolio</title>
     <link href="./css/styles.css" rel="stylesheet">
     <script type="text/javascript" src="./js/animation/particles.js" defer></script>
-    <script type="text/javascript" src="./js/animation/sphere.js" defer></script>
+    <!--<script type="text/javascript" src="./js/animation/sphere.js" defer></script>-->
     <script type="text/javascript" src="./js/animation/networks.js" defer></script>
     <!--<script type="text/javascript" src="./js/menu.js" defer></script>-->
     <script type="text/javascript" src="./js/themes.js" defer></script>
@@ -19,8 +19,6 @@
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
-    <!-- Particle Background -->
-    <div id="particle-container" class="fixed bottom-0 left-0 w-full h-[50vh] z-0"></div>
     <canvas id="network-canvas" class="fixed top-0 left-0 w-screen h-full z-[-1]"></canvas>
     <!-- Header/Navigation -->
     <header class="fixed bg-[#20433f] dark:bg-gray-900 bg-opacity-90 backdrop-blur-sm w-full z-50 py-4 px-6 shadow-lg transition-all duration-300">
@@ -36,7 +34,7 @@
                 <a href="#journey" class="text-white dark:text-[#c9d1d8] text-lg hover:text-indigo-300 transition duration-300">Journey</a>
                 <a href="#contact" class="text-white dark:text-[#c9d1d8] text-lg hover:text-indigo-300 transition duration-300">Contact</a>
                 <a href="aichat.html" class="text-white dark:text-[#c9d1d8] px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition">AI Chat</a>
-                <button id="theme-toggle" class="theme-toggle w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
+                <button id="theme-toggle" class="theme-toggle w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hidden">
                     <i class="fas fa-moon text-yellow-300" id="theme-icon"></i>
                 </button>
             </nav>
@@ -55,7 +53,7 @@
                 <a href="#journey" class="text-lg hover:text-indigo-300 transition duration-300">Journey</a>
                 <a href="#contact" class="text-lg hover:text-indigo-300 transition duration-300">Contact</a>
                 <a href="aichat.html" class="px-4 py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 transition text-center">AI Chat</a>
-                <div class="flex justify-center">
+                <div class="flex justify-center hidden">
                     <button id="theme-toggle-mobile" class="theme-toggle w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
                         <i class="fas fa-moon text-yellow-300" id="theme-icon-mobile"></i>
                     </button>
@@ -67,18 +65,32 @@
     <!-- Hero Section -->
     <section id="about" class="min-h-screen flex items-center justify-center relative pt-20 pb-10 px-4">
         <div class="container mx-auto text-center z-10">
-            <div class="floating mb-8">
-                <div class="relative w-48 h-48 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto shadow-2xl flex items-center justify-center z-[-1] backdrop-inver">
-                    <canvas id="sphere-canvas" class="absolute z-1 h-48 w-48 rounded-full"></canvas>
-                    <span class="text-6xl text-text-secondary dark:text-white z-1">W</span>
+            <div class="relative w-48 h-48 m-auto">
+                <div class="glow"></div>
+                <div id="sphere-canvas" class="absolute rounded-full"></div>
+                <div class="absolute top-12 left-12 transition-transform transition-translate translate-[translate(-50%, -50%)] w-fit">
+                    <div class="initial">W</div>
+                </div>
+
+                <div class="hidden absolute top-[0] left-0 right-0 text-center">
+                    <h1 class="title">Wambua Mwikya</h1>
+                </div>
+
+                <div class="absolute bottom-[0] left-0 right-0 text-center">
+                    <p class="font-[1rem] text-[#94a3b8]">Full Stack Developer & AI Enthusiast</p>
+                </div>
+
+                <div class="hidden absolute bottom-[-80px] left-0 right-0 flex justify-center gap-2 hover:bg-[#818cf8]/20">
+                    <button class="bg-[#1e293b]/80 text-[#e2e8f0] px-2 py-4 cursor-pointer  transition-all duration-300 rounded-md border border-[#818cf8]/30" id="rotate-toggle">Pause Rotation</button>
+                    <button class="bg-[#1e293b]/80 text-[#e2e8f0] px-2 py-4 cursor-pointer  transition-all duration-300 rounded-md border border-[#818cf8]/30" id="theme-toggle">Toggle Theme</button>
                 </div>
             </div>
 
-            <h2 class="text-5xl md:text-6xl font-bold mb-6">
+            <h2 class="text-3xl md:text-5xl md:text-6xl font-bold mb-6">
                 <span class="gradient-text">Software Developer</span> & <span class="gradient-text">AI Enthusiast</span>
             </h2>
 
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10" style="color: var(--text-secondary);">
+            <p class="text-md md:text-xl md:text-2xl max-w-3xl mx-auto mb-10" style="color: var(--text-secondary);">
                 I create innovative solutions that blend cutting-edge technology with elegant design.
             </p>
 
@@ -106,8 +118,8 @@
 
         <!-- Skills Section -->
         <section class="relative z-10 w-full max-w-6xl mx-auto py-12 px-4">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 gradient-text-v2">Skills & Expertise</h2>
-            <p class="text-xl text-center mb-12 text-gray-400 max-w-3xl mx-auto">A comprehensive showcase of my technical abilities and tools I work with</p>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 gradient-text-v2">Skills & Expertise</h2>
+            <p class="text-md md:text-xl text-center mb-12 text-gray-400 max-w-3xl mx-auto">A comprehensive showcase of my technical abilities and tools I work with</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Programming Languages -->
@@ -301,7 +313,7 @@
     <!-- Projects Section -->
     <section id="projects" class="py-20 px-4 section-bg">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
@@ -385,7 +397,7 @@
     <!-- Journey Section -->
     <section id="journey" class="py-20 px-4">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">My Journey</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">My Journey</h2>
 
             <div class="max-w-4xl mx-auto">
                 <!-- Timeline Item 1 -->
@@ -452,7 +464,9 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 section-bg">
+    <section id="contact" class="relative py-20 px-4 section-bg">
+        <!-- Particle Background -->
+        <div id="particle-container" class="absolute bottom-0 left-0 w-full h-[50vh] z-[-1]"></div>
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Get In Touch</h2>
 
@@ -488,13 +502,18 @@
                     <div class="mt-8">
                         <h4 class="text-xl font-semibold mb-4" style="color: var(--text-primary);">Follow me</h4>
                         <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
+                            <a href="https://github.com/skye-cyber" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
                                 <i class="fab fa-github" style="color: var(--text-primary);"></i>
+                            </a>
+                            <a href="https://huggingface.com/skye-waves" target="_blank" class="text-gray-700 hover:text-purple-500">
+                                <div class="flex justify-center mt-2">
+                                    <img class="XNo5Ab" src="data:image/png;base64,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" style="height:18px;width:18px" alt="" data-csiid="dAXMaLzeO4r1i-gP5fe8oQo_2" data-iml="1758201205334" data-atf="1">
+                                </div>
                             </a>
                             <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
                                 <i class="fab fa-linkedin-in" style="color: var(--text-primary);"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
+                            <a href="https://x.com/@SkyeSwskye17" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
                                 <i class="fab fa-twitter" style="color: var(--text-primary);"></i>
                             </a>
                             <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition" style="background: var(--card-bg);">
@@ -532,6 +551,7 @@
 
     <!-- Footer -->
     <footer class="py-12 px-4" style="background: var(--bg-secondary);">
+
         <div class="container mx-auto text-center">
             <h2 class="text-2xl font-bold mb-4" style="color: var(--accent-primary);">SKYE</h2>
             <p class="mb-6" style="color: var(--text-secondary);">Software Developer & AI Enthusiast</p>

@@ -1,4 +1,4 @@
-import { marked } from "marked";
+/*import { marked } from "marked";
 
 document.addEventListener('DOMContentLoaded', () => {
     const skills = document.getElementById('skills-list');
@@ -86,3 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
         trohpy_sec.appendChild(trophyDiv);
     });
 });
+*/

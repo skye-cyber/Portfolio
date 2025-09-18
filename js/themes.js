@@ -59,7 +59,7 @@ function checkScroll() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
-    createParticles();
+    //createParticles();
     window.addEventListener('scroll', checkScroll);
     checkScroll(); // Check on initial load
 });

@@ -19,8 +19,6 @@ function resize() {
     cy = canvas.height / 2;
     //console.log(`After:`, canvas.width, canvas.width)
 }
-window.addEventListener('resize', resize);
-resize();
 
 setCanvasSize();
 window.addEventListener('resize', setCanvasSize);
