@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased max-w-screen overflow-x-hidden">
     <canvas id="network-canvas" class="fixed top-0 left-0 w-screen h-full z-[-1]"></canvas>
     <div class="hidden fixed bottom-0 right-0 z-10 z-30 max-w-2xl mx-auto px-4">
         <header class="text-center mb-4">
@@ -54,7 +54,7 @@
     </div>
 
     <!-- Header/Navigation -->
-    <header class="fixed bg-[#20433f] dark:bg-gray-900 bg-opacity-90 backdrop-blur-sm w-full z-50 py-4 px-6 shadow-lg transition-all duration-300">
+    <header class="fixed top-0 left-0 right-0 bg-[#20433f] dark:bg-gray-900 bg-opacity-90 backdrop-blur-sm w-screen z-50 py-4 px-6 shadow-lg transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold cursor-pointer">
                 <span class="text-green-600">&lt;</span><span class=" gradient-text">Wambua</span><span class="text-green-400">&gt;</span>
@@ -132,7 +132,7 @@
                 I create innovative solutions that blend cutting-edge technology with elegant design.
             </p>
 
-            <div class="typewriter text-xl md:text-2xl mb-12" style="color: var(--text-secondary);">
+            <div class="typewriter text-lg md:text-xl md:text-2xl mb-12" style="color: var(--text-secondary);">
                 Passionate about Python, Django, and AI technologies.
             </div>
 
