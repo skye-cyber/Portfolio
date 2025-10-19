@@ -1,4 +1,12 @@
 {
+    "name": "skye-portfolio",
+    "version": "1.0",
+    "private": true,
+    "description": "Personal portfolio",
+    "scripts": {
+        "watch": "tailwindcss -i css/config.css -o css/styles.css --watch --minify"
+    },
+
     "devDependencies": {
         "babel-loader": "^9.2.1",
         "buffer": "^6.0.3",

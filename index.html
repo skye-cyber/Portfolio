@@ -12,11 +12,9 @@
     <script type="text/javascript" src="./js/themes.js" defer></script>
     <script type="text/javascript" src="./js/final_main.js" defer></script>
     <script type="text/javascript" src="./js/final_fetch.js" defer></script>
+    <script type="text/javascript" src="./js/projects.js" defer></script>
     <!--<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    </style>
 </head>
 <body class="antialiased max-w-screen overflow-x-hidden">
     <canvas id="network-canvas" class="fixed top-0 left-0 w-screen h-full z-[-1]"></canvas>
@@ -351,86 +349,315 @@
     <!-- Projects Section -->
     <section id="projects" class="py-20 px-4 section-bg">
         <div class="container mx-auto">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 gradient-text">Featured Projects</h2>
+            <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto">A showcase of my technical projects spanning AI, security, file management, data visualization, and web applications.</p>
+
+            <!-- Project Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ai">AI & ML</button>
+                <button class="filter-btn" data-filter="security">Security</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="cli">CLI Tools</button>
+                <button class="filter-btn" data-filter="data">Data Visualization</button>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white dark:bg-indigo-950 rounded-2xl p-6 p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
-                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mb-6 flex items-center justify-center">
-                        <img src="./assets/images/quickai.png" class="h-20 w-20">
-                        <!--<i class="fas fa-robot text-6xl text-white"></i>-->
+                <!-- QuickAI -->
+                <div class="project-card" data-categories="ai cli">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="QuickAI Project">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">QuickAi</h3>
-                    <p class="mb-4" style="color: var(--text-secondary);">A versatile AI assistant designed to assist with various tasks using advanced machine learning models.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">Python</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">AI</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-indigo-900 rounded">ML</span>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-indigo-900 text-indigo-100">Python</span>
+                            <span class="project-tag bg-purple-900 text-purple-100">AI</span>
+                            <span class="project-tag bg-blue-900 text-blue-100">ML</span>
+                            <span class="project-tag bg-pink-900 text-pink-100">OpenAI</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">QuickAI</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">A versatile AI assistant with voice interaction capabilities, designed to assist with various tasks using advanced machine learning models including OpenAI's GPT.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/QuickAi.git" target="_blank" class="project-link bg-indigo-600 text-white hover:bg-indigo-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="quickai">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
                     </div>
-                    <a href="https://github.com/skye-cyber/QuickAi.git" target="_blank" class="flex items-center text-indigo-400 hover:text-indigo-300">
-                        View Project <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="bg-white dark:bg-[#55007f] rounded-2xl border-cyan-500 p-6 card-hover p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
-                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg mb-6 flex items-center justify-center">
-                        <i class="fas fa-lock text-6xl text-white"></i>
+                <!-- EncryptionSuite -->
+                <div class="project-card" data-categories="security cli">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Encryption Suite">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">Encryptionsuite</h3>
-                    <p class="mb-4" style="color: var(--text-secondary);">A command-line tool for encrypting and decrypting files and folders with multiple encryption layers.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">Python</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">Security</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-green-900 rounded">CLI</span>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-green-900 text-green-100">Python</span>
+                            <span class="project-tag bg-teal-900 text-teal-100">Security</span>
+                            <span class="project-tag bg-emerald-900 text-emerald-100">Cryptography</span>
+                            <span class="project-tag bg-lime-900 text-lime-100">CLI</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">EncryptionSuite</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">A comprehensive command-line encryption tool featuring multiple algorithms (AES, RSA) for securing files and folders with configurable security levels.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/Encryptionsuite.git" target="_blank" class="project-link bg-green-600 text-white hover:bg-green-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="encryptionsuite">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
                     </div>
-                    <a href="https://github.com/skye-cyber/Encryptionsuite.git" target="_blank" class="flex items-center text-green-400 hover:text-green-300">
-                        View Project <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="bg-white dark:bg-[#004261] rounded-2xl border border-cyan-500 backdrop-invert p-6 card-hover p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
-                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg mb-6 flex items-center justify-center">
-                        <i class="fas fa-file-alt text-6xl text-white"></i>
+                <!-- FileMAC -->
+                <div class="project-card" data-categories="cli">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1592427159318-8e6ec5e1c8e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="FileMAC">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">FileMAC</h3>
-                    <p class="mb-4" style="color: var(--text-secondary);">A comprehensive multimedia file operation kit. Encapsulating reputable multimedia elements and more.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">Python</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">CLI</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">File Conversio</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">File Manager</span>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-blue-900 text-blue-100">Python</span>
+                            <span class="project-tag bg-cyan-900 text-cyan-100">CLI</span>
+                            <span class="project-tag bg-sky-900 text-sky-100">File Conversion</span>
+                            <span class="project-tag bg-indigo-900 text-indigo-100">File Manager</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">FileMAC</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">A comprehensive multimedia file operation toolkit with batch processing, format conversion, metadata editing, and organization capabilities.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/FileMAC.git" target="_blank" class="project-link bg-blue-600 text-white hover:bg-blue-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="filemac">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
                     </div>
-                    <a href="https://github.com/skye-cyber/FileMAC.git" target="_blank" class="flex items-center text-blue-400 hover:text-blue-300">
-                        View Project <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
                 </div>
 
-                <div class="hidden bg-white dark:bg-[#004261] rounded-2xl border border-cyan-500 backdrop-invert p-6 card-hover p-8 transition-transform transition-all duration-300 hover:translate-y-[10px] shadow-md shadow-[#00000]">
-                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg mb-6 flex items-center justify-center">
-                        <i class="fas fa-file-alt text-6xl text-white"></i>
+                <!-- DistriChat -->
+                <div class="project-card" data-categories="web ai">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="DistriChat">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">AFReader</h3>
-                    <p class="mb-4" style="color: var(--text-secondary);">A command-line tool that animates and displays file content for easy reading from the terminal.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">Python</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">CLI</span>
-                        <span class="text-xs px-2 py-1 text-indigo-100 bg-blue-900 rounded">Animation</span>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-indigo-900 text-indigo-100">Python</span>
+                            <span class="project-tag bg-purple-900 text-purple-100">Django</span>
+                            <span class="project-tag bg-blue-900 text-blue-100">WebSockets</span>
+                            <span class="project-tag bg-pink-900 text-pink-100">Real-time</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">DistriChat</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">A distributed real-time chat application powered by Django and WebSockets with room-based messaging, user authentication, and message persistence.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/districhat.git" target="_blank" class="project-link bg-indigo-600 text-white hover:bg-indigo-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="districhat">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
                     </div>
-                    <a href="https://github.com/skye-cyber/AFReader.git" target="_blank" class="flex items-center text-blue-400 hover:text-blue-300">
-                        View Project <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                </div>
+
+                <!-- GraphPy -->
+                <div class="project-card" data-categories="data cli">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="GraphPy">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-purple-900 text-purple-100">Python</span>
+                            <span class="project-tag bg-indigo-900 text-indigo-100">Data Visualization</span>
+                            <span class="project-tag bg-blue-900 text-blue-100">Graph Theory</span>
+                            <span class="project-tag bg-pink-900 text-pink-100">SVG</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">GraphPy</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">A pure Python alternative to Graphviz for graph visualization, featuring multiple layout algorithms and output formats including SVG, PNG, and HTML.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/graphpy.git" target="_blank" class="project-link bg-purple-600 text-white hover:bg-purple-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="graphpy">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DotFlow -->
+                <div class="project-card" data-categories="cli">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="DotFlow">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-blue-900 text-blue-100">Python</span>
+                            <span class="project-tag bg-cyan-900 text-cyan-100">CLI</span>
+                            <span class="project-tag bg-sky-900 text-sky-100">Automation</span>
+                            <span class="project-tag bg-indigo-900 text-indigo-100">Workflow</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">DotFlow</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">A workflow automation tool that helps manage and execute complex task sequences with dependency resolution and parallel execution capabilities.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/dotflow.git" target="_blank" class="project-link bg-blue-600 text-white hover:bg-blue-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="dotflow">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PyMMDC -->
+                <div class="project-card" data-categories="cli">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="PyMMDC">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-green-900 text-green-100">Python</span>
+                            <span class="project-tag bg-teal-900 text-teal-100">CLI</span>
+                            <span class="project-tag bg-emerald-900 text-emerald-100">Media</span>
+                            <span class="project-tag bg-lime-900 text-lime-100">Conversion</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">PyMMDC</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">Python Multimedia Converter - A powerful tool for converting between various multimedia formats with support for batch processing and custom presets.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/pymmdc.git" target="_blank" class="project-link bg-green-600 text-white hover:bg-green-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="pymmdc">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Candisys -->
+                <div class="project-card" data-categories="ai web">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Candisys">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-indigo-900 text-indigo-100">Python</span>
+                            <span class="project-tag bg-purple-900 text-purple-100">AI</span>
+                            <span class="project-tag bg-blue-900 text-blue-100">Candlestick</span>
+                            <span class="project-tag bg-pink-900 text-pink-100">Trading</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Candisys</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">An AI-powered candlestick pattern recognition system for financial markets with real-time analysis and predictive modeling capabilities.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/candisys.git" target="_blank" class="project-link bg-indigo-600 text-white hover:bg-indigo-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="candisys">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SonicSlicer -->
+                <div class="project-card" data-categories="cli">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="SonicSlicer">
+                        <div class="project-overlay">
+                            <div class="text-white text-center">
+                                <i class="fab fa-github text-2xl mb-2 block"></i>
+                                <span>View Repository</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag bg-blue-900 text-blue-100">Python</span>
+                            <span class="project-tag bg-cyan-900 text-cyan-100">Audio</span>
+                            <span class="project-tag bg-sky-900 text-sky-100">CLI</span>
+                            <span class="project-tag bg-indigo-900 text-indigo-100">Processing</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-white">SonicSlicer</h3>
+                        <p class="mb-4 text-gray-300 flex-grow">An audio processing tool for slicing, editing, and analyzing audio files with support for various formats and batch processing operations.</p>
+                        <div class="flex space-x-3 mt-auto">
+                            <a href="https://github.com/skye-cyber/sonicslicer.git" target="_blank" class="project-link bg-blue-600 text-white hover:bg-blue-700">
+                                View Project <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button class="project-detail-btn project-link bg-gray-700 text-white hover:bg-gray-600" data-project="sonicslicer">
+                                Details <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="#" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-semibold transition">
-                    View All Projects
+            <div class="text-center mt-16">
+                <a href="https://github.com/skye-cyber" target="_blank" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white font-semibold transition inline-flex items-center">
+                    <i class="fab fa-github mr-2"></i> View All Projects on GitHub
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Project Detail Modals -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
 
     <!-- Journey Section -->
     <section id="journey" class="py-20 px-4">

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skye AI | Modern Chat Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style type="text/css">
+        :root {
+            --light-bg: 241 245 249;
+            --dark-bg: 15 23 42;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .theme-transition * {
+            transition: var(--transition);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .light-glass {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .dark-glass {
+            background: rgba(15, 23, 42, 0.7);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .message-animation {
+            animation: messageSlide 0.3s ease-out;
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingAnimation {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 3px;
+        }
+
+        .toggle-thumb {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 12px;
+            background-clip: padding-box;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(45deg, #0ea5e9, #a855f7);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-[#f1f5f9] dark:bg-slate-900 theme-transition">
+    <!-- Navbar -->
+    <nav class="w-full light-glass dark:text-primary p-4 shadow-lg flex items-center justify-between sticky top-0 z-10 theme-transition">
+        <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 flex items-center justify-center shadow-lg">
+                <i class="fas fa-robot text-white"></i>
+            </div>
+            <h1 class="text-xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-400 dark:to-secondary-400 bg-clip-text text-transparent">Skye AI</h1>
+        </div>
+
+        <div class="flex items-center space-x-6">
+            <ul class="flex space-x-6 font-medium text-slate-700 dark:text-slate-200">
+                <li><a href="#" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a></li>
+                <li><a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a></li>
+                <li><a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a></li>
+            </ul>
+
+            <div class="theme-toggle bg-slate-300 dark:bg-slate-700" id="theme-toggle-aichat">
+                <div class="toggle-thumb bg-white dark:bg-slate-900 dark:translate-x-[30px]">
+                    <i class="fas fa-sun text-amber-500 text-xs dark:hidden"></i>
+                    <i class="fas fa-moon text-indigo-300 text-xs hidden dark:block"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex justify-center">
+        <!-- Main Container -->
+        <div class="container max-w-4xl w-full p-4 md:p-6 mt-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 theme-transition">
+            <!-- Header -->
+            <header class="text-center mb-6 rounded-md p-1">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-primary-500 to-secondary-600 p-0.5 shadow-lg">
+                                <div class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center theme-transition">
+                                    <i class="fas fa-star text-primary-500 animate-pulse"></i>
+                                </div>
+                            </div>
+                            <span class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white dark:border-slate-800 theme-transition"></span>
+                        </div>
+                        <div class="text-left">
+                            <h1 class="text-xl font-bold text-slate-800 dark:text-white theme-transition">Skye AI Assistant</h1>
+                            <p class="text-xs text-primary-600 dark:text-primary-400 theme-transition">Online • Ready to help</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="relative group">
+                            <select id="mode" class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500 appearance-none cursor-pointer theme-transition">
+                                <option value="general" class="bg-white dark:bg-slate-800">General Mode</option>
+                                <option value="coding" class="bg-white dark:bg-slate-800">Coding Mode</option>
+                            </select>
+                            <i class="fas fa-chevron-down absolute right-3 top-3 text-xs text-primary-500 pointer-events-none"></i>
+                        </div>
+
+                        <label class="flex items-center cursor-pointer">
+                            <div class="relative">
+                                <input id="CModel" type="checkbox" class="sr-only" />
+                                <div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 rounded-full border border-slate-300 dark:border-slate-600 theme-transition"></div>
+                                <div class="dot absolute w-4 h-4 bg-primary-500 rounded-full transition left-1 top-1 theme-transition"></div>
+                            </div>
+                            <div class="ml-3 text-xs font-medium text-slate-700 dark:text-slate-300 theme-transition">Flux 4</div>
+                        </label>
+                    </div>
+                </div>
+
+                <p class="text-sm text-slate-600 dark:text-slate-400 hidden md:block animate-pulse theme-transition">
+                    Interact with the AI model and receive instant responses.
+                </p>
+            </header>
+
+            <!-- Chat Area -->
+            <section id="chatArea" class="bg-slate-100 dark:bg-slate-900/50 p-4 rounded-2xl shadow-inner min-h-[50vh] max-h-[60vh] overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-primary-500 scrollbar-track-slate-300 dark:scrollbar-track-slate-700 theme-transition">
+                <!-- Welcome Message -->
+                <div class="flex justify-start message-animation">
+                    <div class="flex items-start space-x-2 max-w-lg">
+                        <div class="w-7 h-7 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex-shrink-0 flex items-center justify-center mt-1">
+                            <i class="fas fa-robot text-xs text-white"></i>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl rounded-tl-none shadow-md border border-slate-200 dark:border-slate-700 theme-transition">
+                            <p class="text-slate-800 dark:text-slate-200 theme-transition">
+                                Hi there! I'm Skye, your AI assistant. How can I help you today?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example User Message -->
+                <div class="flex justify-end message-animation">
+                    <div class="flex items-start space-x-2 max-w-lg">
+                        <div class="bg-primary-600 p-4 rounded-2xl rounded-tr-none shadow-md">
+                            <p class="text-white">
+                                Can you help me with a coding problem?
+                            </p>
+                        </div>
+                        <div class="w-7 h-7 rounded-full bg-slate-600 flex-shrink-0 flex items-center justify-center mt-1">
+                            <i class="fas fa-user text-xs text-white"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example AI Response -->
+                <div class="flex justify-start message-animation">
+                    <div class="flex items-start space-x-2 max-w-lg">
+                        <div class="w-7 h-7 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex-shrink-0 flex items-center justify-center mt-1">
+                            <i class="fas fa-robot text-xs text-white"></i>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl rounded-tl-none shadow-md border border-slate-200 dark:border-slate-700 theme-transition">
+                            <p class="text-slate-800 dark:text-slate-200 theme-transition">
+                                Of course! I'd be happy to help with your coding problem. Could you please provide more details about what you're trying to accomplish?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Message Input Section -->
+            <section class="mt-6 flex space-x-3">
+                <div class="relative flex-1">
+                    <input
+                        type="text"
+                        id="userInput"
+                        class="w-full p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 pr-12 text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 theme-transition"
+                        autofocus
+                        placeholder="Message Skye... 💫 To generate an image, start with `/image`"
+                        aria-label="Message input"
+                    />
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-4">
+                        <button class="text-slate-500 hover:text-primary-500 transition-colors">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button
+                    id="sendBtn"
+                    class="px-5 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 shadow-lg hover:shadow-primary-500/20 flex items-center justify-center"
+                    aria-label="Send message"
+                >
+                    <i class="fas fa-paper-plane text-lg"></i>
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <footer class="text-center mt-8 mb-4 text-xs text-slate-600 dark:text-slate-400 theme-transition">
+        <p>© 2025 Skye AI • Advanced conversational AI assistant</p>
+    </footer>
+    <script src="../js/final_aichat.js"></script>
+    <script src="../js/themes.js"></script>
+
+    <script>
+
+
+        // Toggle switch styling
+        const toggle = document.getElementById('CModel');
+        toggle.addEventListener('change', function() {
+            const dot = document.querySelector('.dot');
+            if (this.checked) {
+                dot.style.transform = 'translateX(16px)';
+                dot.style.backgroundColor = '#a855f7';
+            } else {
+                dot.style.transform = 'translateX(0)';
+                dot.style.backgroundColor = '#0ea5e9';
+            }
+        });
+
+        // Basic chat functionality for demonstration
+        const chatArea = document.getElementById('chatArea');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex justify-${isUser ? 'end' : 'start'} message-animation`;
+
+            messageDiv.innerHTML = `
+                <div class="flex items-start space-x-2 max-w-lg ${isUser ? 'flex-row-reverse space-x-reverse' : ''}">
+                    <div class="w-7 h-7 rounded-full ${isUser ? 'bg-slate-600' : 'bg-gradient-to-r from-primary-500 to-secondary-500'} flex-shrink-0 flex items-center justify-center mt-1">
+                        <i class="fas ${isUser ? 'fa-user' : 'fa-robot'} text-xs text-white"></i>
+                    </div>
+                    <div class="${isUser ? 'bg-primary-600 text-white' : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200'} p-4 rounded-2xl ${isUser ? 'rounded-tr-none' : 'rounded-tl-none'} shadow-md border ${isUser ? 'border-primary-700' : 'border-slate-200 dark:border-slate-700'} theme-transition">
+                        <p>${message}</p>
+                    </div>
+                </div>
+            `;
+
+            chatArea.appendChild(messageDiv);
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
+
+        sendBtn.addEventListener('click', () => {
+            if (userInput.value.trim() !== '') {
+                addMessage(userInput.value, true);
+
+                // Show typing indicator
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'flex justify-start message-animation';
+                typingIndicator.innerHTML = `
+                    <div class="flex items-start space-x-2 max-w-lg">
+                        <div class="w-7 h-7 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex-shrink-0 flex items-center justify-center mt-1">
+                            <i class="fas fa-robot text-xs text-white"></i>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl rounded-tl-none shadow-md border border-slate-200 dark:border-slate-700 theme-transition">
+                            <div class="typing-indicator">
+                                <div class="typing-dot bg-primary-500"></div>
+                                <div class="typing-dot bg-primary-500"></div>
+                                <div class="typing-dot bg-primary-500"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                chatArea.appendChild(typingIndicator);
+                chatArea.scrollTop = chatArea.scrollHeight;
+
+                // Simulate AI response after a short delay
+                setTimeout(() => {
+                    chatArea.removeChild(typingIndicator);
+                    addMessage("I'm processing your request. This is a demo interface. In a real application, I would provide a helpful response based on your message!");
+                }, 1500);
+
+                userInput.value = '';
+            }
+        });
+
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
