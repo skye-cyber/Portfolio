@@ -4,7 +4,7 @@ node_modules/
 *.local
 
 # Ignore original portfolio files (not needed for React version)
-index.html
+# index.html
 css/
 js/
 webpack.config.js
