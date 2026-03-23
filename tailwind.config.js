@@ -3,16 +3,19 @@ module.exports = {
     darkMode: 'class', /*'[data-mode="dark"]'],*/
     content: [
         "*.html",
-        ".TODO/**/*.html"
+        "src/**/**.jsx"
     ],
     theme: {
         screens: {
-            xs: '420',
-            sm: '640px',
-            md: '768px',
-            lg: '1024px',
-            xl: '1280px',
-            '2xl': '1536px',
+            sxs: "256px",
+            xs: "384px",
+            sm: "512px", //previously 640px
+            md: "768px",
+            sd: "896px",
+            lg: "1024px",
+            "2lg": "1152px",
+            xl: "1280px",
+            "2xl": "1536px",
         },
         fontFamily: {
             display: ['Source Serif Pro', 'Georgia', 'serif'],
@@ -35,6 +38,20 @@ module.exports = {
                 'h4': '400',
                 'h5': '300',
                 'h6': '200',
+            },
+            zIndex: {
+                1: "1",
+                5: "5",
+                10: "10",
+                15: "15",
+                20: "20",
+                25: "25",
+                30: "30",
+                35: "35",
+                40: "40",
+                41: "41",
+                45: "45",
+                51: "51",
             },
             colors: {
                 primary: "#6C63FF",

@@ -1,27 +1,34 @@
 {
-    "name": "skye-portfolio",
-    "version": "1.0",
-    "private": true,
-    "description": "Personal portfolio",
-    "scripts": {
-        "tailwind:watch": "tailwindcss -i css/config.css -o css/styles.css --watch --minify"
-    },
-
-    "devDependencies": {
-        "babel-loader": "^9.2.1",
-        "buffer": "^6.0.3",
-        "crypto": "^1.0.1",
-        "crypto-browserify": "^3.12.1",
-        "crypto-js": "^4.2.0",
-        "path-browserify": "^1.0.1",
-        "process": "^0.11.10",
-        "stream-browserify": "^3.0.0",
-        "vm-browserify": "^1.1.2",
-        "tailwindcss": "^3.3.3",
-        "autoprefixer": "^10.4.14",
-        "prettier": "^3.8.1"
-    },
-    "dependencies": {
-        "emailjs-com": "^3.2.0"
-    }
+  "name": "portfolio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && vercel --prod",
+    "tailwind:build": "npx tailwindcss -i src/styles/config.css -o src/styles/global.css --minify",
+    "tailwind:watch": "npx tailwindcss -i src/styles/config.css -o src/styles/global.css --watch"
+  },
+  "dependencies": {
+    "framer-motion": "^11.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "vite": "^5.2.0"
+  }
 }
