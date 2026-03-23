@@ -10,8 +10,8 @@ __pycache__/
 *~
 *.egg-info/**
 # Ignore build directories
-**/build/
-**/dist/
+# **/build/
+# **/dist/
 
 # Ignore IDE and editor files
 .vscode/
