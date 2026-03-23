@@ -4,18 +4,23 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
+    plugins: [
+        react({
+            // This ensures proper JSX transformation
+            jsxRuntime: 'automatic',
+            jsxImportSource: 'react',
+        })
+    ],
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
         },
     },
-    //base: './',
     server: {
-        // host: '0.0.0.0',
         port: 3000,
-        proxy: {
-            //
-        }
+    },
+    build: {
+        // Ensure proper source maps for debugging
+        sourcemap: true,
     }
 })
