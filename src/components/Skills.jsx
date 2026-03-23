@@ -76,9 +76,9 @@ export default function Skills() {
 
   return (
     <section id="skills-wrapper" className="relative py-20">
-      <div className="floating-shape animate-float w-80 h-80 bg-purple-500 top-1/4 left-1/4"></div>
-      <div className="floating-shape animate-pulse-soft w-64 h-64 bg-teal-500 top-1/2 right-1/4 animation-delay-1000"></div>
-      <div className="floating-shape animate-float w-72 h-72 bg-pink-500 bottom-1/4 left-1/3 animation-delay-2000"></div>
+      <div className="floating-shape animate-float w-80 h-80 bg-purple-400 top-1/4 left-1/4"></div>
+      <div className="floating-shape animate-pulse-soft w-64 h-64 bg-teal-400 top-1/2 right-1/4 animation-delay-1000"></div>
+      <div className="floating-shape animate-float w-72 h-72 bg-[#ff007f] bottom-1/4 left-1/3 animation-delay-2000"></div>
 
       <section className="relative z-10 w-full max-w-6xl mx-auto py-12 px-4">
         <motion.h2

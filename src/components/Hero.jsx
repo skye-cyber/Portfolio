@@ -119,20 +119,96 @@ export default function Hero() {
 
             <div className="container mx-auto text-center z-10">
                 <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.5 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{
+                        duration: 0.8,
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20
+                    }}
                     className="relative w-24 h-24 sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px] m-auto mb-8"
                 >
-                    <div
-                        className="absolute w-full h-full rounded-full shadow-[0_0_60px_rgba(129,140,248,0.4),_0_0_100px_rgba(129,140,248,0.2)] animate-pulse z-0"
-                    ></div>
+                    {/* Pulsing glow effect */}
+                    <motion.div
+                        className="absolute w-full h-full rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-50 blur-xl"
+                        animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.3, 0.6, 0.3]
+                        }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
 
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div className="font-bold text-6xl bg-gradient-to-br from-[#818cf8] to-[#c084fc] bg-clip-text text-transparent [text-shadow:0_0_10px_rgba(129,140,248,0.6),_0_0_20px_rgba(129,140,248,0.3)]">
+                    {/* Rotating border */}
+                    <motion.div
+                        className="absolute inset-0 rounded-full border-2 border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px]"
+                        animate={{
+                            rotate: 360
+                        }}
+                        transition={{
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "linear"
+                        }}
+                    >
+                        <div className="w-full h-full rounded-full bg-slate-950" />
+                    </motion.div>
+
+                    {/* Inner glow */}
+                    <div
+                        className="absolute inset-[2px] rounded-full bg-gradient-to-br from-slate-900 to-slate-950 shadow-[0_0_30px_rgba(139,92,246,0.3)] border border-purple-500/30"
+                    />
+
+                    {/* Floating particles around the circle */}
+                    {[...Array(8)].map((_, i) => (
+                        <motion.div
+                            key={i}
+                            className="absolute w-1 h-1 bg-purple-400 rounded-full"
+                            style={{
+                                top: '50%',
+                                left: '50%',
+                                x: Math.cos(i * Math.PI * 2 / 8) * 85,
+                                y: Math.sin(i * Math.PI * 2 / 8) * 85,
+                            }}
+                            animate={{
+                                scale: [1, 1.5, 1],
+                                opacity: [0.5, 1, 0.5],
+                            }}
+                            transition={{
+                                duration: 1.5,
+                                delay: i * 0.2,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        />
+                    ))}
+
+                    {/* Main logo with subtle bounce */}
+                    <motion.div
+                        className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2"
+                        animate={{
+                            y: [0, -5, 0],
+                        }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    >
+                        <motion.div
+                            className="font-bold text-6xl bg-gradient-to-br from-[#818cf8] to-[#c084fc] bg-clip-text text-transparent [text-shadow:0_0_10px_rgba(129,140,248,0.6),_0_0_20px_rgba(129,140,248,0.3)]"
+                            whileHover={{
+                                scale: 1.1,
+                                transition: { duration: 0.2 }
+                            }}
+                        >
                             W
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </motion.div>
 
                 <motion.h2

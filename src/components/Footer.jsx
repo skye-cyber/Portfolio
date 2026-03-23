@@ -7,7 +7,7 @@ export default function Footer() {
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="py-12 px-4 bg-gray-900 border-t border-gray-800"
+      className="relative z-[15] py-12 px-4 bg-gray-900 border-t border-gray-800"
     >
       <div className="container mx-auto text-center">
         <motion.h2

@@ -22,7 +22,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-20 px-4 section-bg">
+    <section id="contact" className="relative z-[15] py-20 px-4 bg-gray-900 bg-opacity-80">
       <div className="container mx-auto">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
@@ -150,7 +150,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
                 />
               </div>
 
@@ -163,7 +163,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
                 />
               </div>
 
@@ -176,7 +176,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
                 ></textarea>
               </div>
 
