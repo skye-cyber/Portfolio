@@ -1,0 +1,19 @@
+# Ignore unnecessary files for Vercel deployment
+node_modules/
+.DS_Store
+*.local
+
+# Ignore original portfolio files (not needed for React version)
+index.html
+css/
+js/
+webpack.config.js
+pack.py
+animations.html
+.TODO/
+
+# Ignore development files
+tailwind.config.js
+postcss.config.js
+vite.config.js
+eslint.config.js

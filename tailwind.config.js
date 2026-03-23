@@ -3,16 +3,19 @@ module.exports = {
     darkMode: 'class', /*'[data-mode="dark"]'],*/
     content: [
         "*.html",
-        ".TODO/**/*.html"
+        "src/**/**.jsx"
     ],
     theme: {
         screens: {
-            xs: '420',
-            sm: '640px',
-            md: '768px',
-            lg: '1024px',
-            xl: '1280px',
-            '2xl': '1536px',
+            sxs: "256px",
+            xs: "384px",
+            sm: "512px", //previously 640px
+            md: "768px",
+            sd: "896px",
+            lg: "1024px",
+            "2lg": "1152px",
+            xl: "1280px",
+            "2xl": "1536px",
         },
         fontFamily: {
             display: ['Source Serif Pro', 'Georgia', 'serif'],
@@ -20,6 +23,30 @@ module.exports = {
             sans: ['"Inter", sans-serif'],
         },
         extend: {
+            boxShadow: {
+                'balanced-sm': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+                'balanced': '0 2px 6px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08)',
+                'balanced-md': '0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 2px 6px 0 rgba(0, 0, 0, 0.08)',
+                'balanced-lg': '0 8px 24px 0 rgba(0, 0, 0, 0.1), 0 4px 12px 0 rgba(0, 0, 0, 0.08)',
+                'balanced-xl': '0 12px 36px 0 rgba(0, 0, 0, 0.1), 0 6px 18px 0 rgba(0, 0, 0, 0.08)',
+                'balanced-2xl': '0 24px 48px 0 rgba(0, 0, 0, 0.1), 0 12px 24px 0 rgba(0, 0, 0, 0.08)',
+
+                // Even more balanced (centered)
+                'centered-sm': '0 0 3px 0 rgba(0, 0, 0, 0.1)',
+                'centered': '0 0 6px 0 rgba(0, 0, 0, 0.1)',
+                'centered-md': '0 0 12px 0 rgba(0, 0, 0, 0.1)',
+                'centered-lg': '0 0 24px 0 rgba(0, 0, 0, 0.1)',
+                'centered-xl': '0 0 36px 0 rgba(0, 0, 0, 0.15)',
+
+                // Soft balanced shadows
+                'soft': '0 2px 8px rgba(0, 0, 0, 0.08)',
+                'soft-md': '0 4px 16px rgba(0, 0, 0, 0.08)',
+                'soft-lg': '0 8px 32px rgba(0, 0, 0, 0.1)',
+
+                // For your message component specifically
+                'message': '0 2px 8px rgba(0, 0, 0, 0.1)',
+                'message-hover': '0 4px 16px rgba(0, 0, 0, 0.12)',
+            },
             fontSize: {
                 'h1': '36',
                 'h2': '2rem',
@@ -35,6 +62,20 @@ module.exports = {
                 'h4': '400',
                 'h5': '300',
                 'h6': '200',
+            },
+            zIndex: {
+                1: "1",
+                5: "5",
+                10: "10",
+                15: "15",
+                20: "20",
+                25: "25",
+                30: "30",
+                35: "35",
+                40: "40",
+                41: "41",
+                45: "45",
+                51: "51",
             },
             colors: {
                 primary: "#6C63FF",
@@ -145,9 +186,9 @@ module.exports = {
             }
 
         },
-                /*gradientColorStops: {
-                        *          'gradient-primary': '#00b4d8',
-                        *          'gradient-secondary': '#00ffcc',
+        /*gradientColorStops: {
+                *          'gradient-primary': '#00b4d8',
+                *          'gradient-secondary': '#00ffcc',
 },*/
     },
     plugins: [
